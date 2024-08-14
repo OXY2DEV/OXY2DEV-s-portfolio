@@ -1,7 +1,1 @@
-# System information
-
->[!note]
-> OS: Android 14
-
-- OS: Android 14
-
+A portfolio website inspired by the terminal made completely on mobile!
