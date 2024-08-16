@@ -19,6 +19,7 @@ eruda.init();
 let page_loaded = false;
 window.onload = () => { page_loaded = true; };
 
+let name_intro = gsap.timeline({ paused: true });
 let pre_comp = gsap.timeline({ paused: true });
 let pre = gsap.timeline({ paused: true, delay: 0.2, onComplete: () => {
 	if (page_loaded == true) {
@@ -316,9 +317,16 @@ pre_comp.add(animations.add_terminal_lines("#preloader", {
 		{ text: "nvim", duration: 0.2, onStart: (_, ele) => { ele.classList.add("hl-green") } },
 	]
 }));
-pre_comp.to("#preloader", { autoAlpha: 0, delay: 0.5 });
+pre_comp.fromTo("#main", { height: 10, overflow: "hidden" }, {
+	height: "auto", overflow: "default",
+	duration: 0.1
+})
+pre_comp.to("#preloader", {
+	autoAlpha: 0, delay: 0.5,
+	onComplete: () => { name_intro.play(); }
+});
 
-pre_comp.add(animations.reveal("#main .intro .bg .statuscol .lnum", animations.num_array(30), { duration: 0.15, stagger: 0 }));
+pre_comp.add(animations.reveal("#main .intro .bg .statuscol .lnum", animations.num_array(23), { duration: 0.25, stagger: 0 }));
 pre_comp.add(animations.add_terminal_lines("#main .intro .bg .buffer", {
 	animations: [
 		{ text: "󰀲 Dev env.", duration: 0.5, onStart: (_, ele) => { ele.classList.add("h1") } },
@@ -342,7 +350,7 @@ pre_comp.add(animations.reveal("#main .intro .bg .buffer", [
 ]));
 pre_comp.add(animations.add_terminal_lines("#main .intro .bg .buffer", {
 	animations: [
-		{ text: " Used languages", duration: 0.5, onStart: (_, ele) => { ele.classList.add("h1") } },
+		{ text: "󰗊 Used languages", duration: 0.5, onStart: (_, ele) => { ele.classList.add("h1") } },
 	]
 }));
 pre_comp.add(animations.reveal("#main .intro .bg .buffer", [
@@ -397,10 +405,37 @@ pre_comp.add(animations.reveal("#main .intro .bg .buffer", [
 	[
 		{ text: "   ", class: "list-marker" },
 		{ text: "  " },
-		{ text: "Lines of code written: 237K+" }
+		{ text: "Code written: 208,388+ lines" }
 	],
 	[ { text: " " } ],
 ], { stagger: 0 }));
+
+
+
+name_intro.fromTo("#main .intro .content .name-container .center", {
+	scale: 0
+}, {
+	scale: 1, ease: "expo.in",
+}, "<");
+name_intro.fromTo("#main .intro .content .name-container .left .part", {
+	y: -50, autoAlpha: 0
+}, {
+	y: 0, autoAlpha: 1,
+	duration: 0.25, stagger: { each: 0.1, from: "end", ease: "power1.in" }
+}, "<");
+name_intro.fromTo("#main .intro .content .name-container .right .part", {
+	y: 50, autoAlpha: 0
+}, {
+	y: 0, autoAlpha: 1,
+	duration: 0.25, stagger: { each: 0.1, from: "start", ease: "power1.out" }
+}, "<");
+name_intro.fromTo("#main .intro .content .desc", {
+	y: 50, autoAlpha: 0
+}, {
+	y: 0, autoAlpha: 1,
+	duration: 0.25
+});
+
 
 pre.play()
 // -_
@@ -421,6 +456,137 @@ ScrollTrigger.create({
 	pin: true,
 	//scrub: true
 })
+
+
+
+
+
+let intro_tl = gsap.timeline({
+	scrollTrigger: {
+		trigger: "#main #about-me",
+		scrub: 0.5
+	}
+})
+
+intro_tl.fromTo(".terminal", { y: 0 }, {
+	y: -200,
+}, "<");
+intro_tl.fromTo(".cmdline", { y: -200 }, {
+	y: 0,
+}, "<");
+//intro_tl.fromTo(".blur", { scale: 0 }, {
+//	scale: 1,
+//})
+
+let skill_tl = gsap.timeline({
+	scrollTrigger: {
+		trigger: "#main #skills",
+		scrub: 0.5,
+	}
+})
+skill_tl.fromTo(".slider-left", { yPercent: 0 }, {
+	yPercent: -50,
+}, "<");
+skill_tl.fromTo(".slider-right", { yPercent: -50 }, {
+	yPercent: 0,
+}, "<");
+
+skill_tl.to("#main #skills .snap-1", {
+	y: -150,
+}, "<");
+skill_tl.to("#main #skills .snap-2", {
+	y: 150,
+}, "<");
+skill_tl.to("#main #skills .snap-3", {
+	x: 150,
+}, "<");
+skill_tl.to("#main #skills .snap-4", {
+	x: -150,
+}, "<");
+
+gsap.fromTo("#main #skills .content p", {
+	autoAlpha: 0
+}, {
+	autoAlpha: 1,
+	stagger: 0.15,
+	duration: 0.3,
+
+	scrollTrigger: {
+		trigger: "#main #skills",
+		scrub: false,
+
+		start: "+100 center",
+		end: "center center",
+	}
+});
+gsap.fromTo("#main #skills .bg #did-you-know", {
+	y: 100
+}, {
+	y: 0,
+	duration: 0.5,
+
+	scrollTrigger: {
+		trigger: "#main #skills",
+		scrub: 1,
+
+		start: "bottom +100",
+		end: "bottom bottom",
+	}
+});
+
+
+//let projects = gsap.utils.toArray("#main #projects .project")
+//
+//gsap.to(projects, {
+//	xPercent: -100 * (projects.length - 1),
+//	ease: "none",
+//
+//	scrollTrigger: {
+//		trigger: "#main #projects",
+//		pin: true, scrub: 0,
+//
+//		snap: 1 / (projects.length - 1),
+//		end: () => "+=" + document.querySelector("#projects").offsetWidth
+//	}
+//})
+
+
+
+let prj_intro_tl = gsap.timeline({
+	scrollTrigger: {
+		trigger: "#main #projects .project#prj-intro",
+		start: "+100 center",
+	}
+})
+
+prj_intro_tl.fromTo("#main #projects .icons p", { autoAlpha: 0 }, {
+	autoAlpha: 0.5,
+	stagger: 0.25,
+});
+prj_intro_tl.addLabel("icon-reveal");
+
+prj_intro_tl.to("#main #projects .project#prj-intro .icons .left", {
+	y: -25
+}, "icon-reveal")
+prj_intro_tl.to("#main #projects .project#prj-intro .icons .right", {
+	y: 25
+}, "icon-reveal")
+
+prj_intro_tl.fromTo("#main #projects .project#prj-intro .section-name span", { y: 100 }, {
+	y: 0,
+	duration: 0.2,
+	stagger: 0.05
+}, "icon-reveal")
+
+
+let mrk_prj_tl = gsap.timeline({
+	scrollTrigger: {
+		trigger: "#main #projects .project#markview",
+		start: "+100 center",
+	}
+})
+
+
 
 intro.addEventListener("mousemove", align_gradient)
 
