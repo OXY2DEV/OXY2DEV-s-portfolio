@@ -785,8 +785,8 @@ body {
     }
 
     .content {
-      --x: 25dvw;
-      --y: calc(50dvh - 25dvw);
+      --x: 0;
+      --y: 0;
 
       z-index: 10;
 

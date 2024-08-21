@@ -1,4 +1,3 @@
-import eruda from "eruda";
 import Lenis from 'lenis'
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -14,8 +13,6 @@ gsap.ticker.add((time)=>{
   lenis.raf(time * 1000)
 })
 
-eruda.init();
-
 let page_loaded = false;
 window.onload = () => { page_loaded = true; };
 
@@ -29,11 +26,6 @@ let pre = gsap.timeline({ paused: true, delay: 0.2, onComplete: () => {
 
 	window.onload = () => { pre_comp.play(); }
 } });
-
-document.querySelector("#preloader").onclick = () => {
-	pre.pause();
-	pre_comp.play();
-}
 
 // -+ Loader animations
 pre.add(animations.add_terminal_lines("#preloader", {
@@ -465,7 +457,6 @@ ScrollTrigger.create({
 	trigger: "#main .intro .bg",
 	target: "#main .intro .bg",
 	pin: true,
-	//scrub: true
 })
 
 
@@ -485,9 +476,6 @@ intro_tl.fromTo(".terminal", { y: 0 }, {
 intro_tl.fromTo(".cmdline", { y: -200 }, {
 	y: 0,
 }, "<");
-//intro_tl.fromTo(".blur", { scale: 0 }, {
-//	scale: 1,
-//})
 
 let skill_tl = gsap.timeline({
 	scrollTrigger: {
@@ -546,22 +534,6 @@ gsap.fromTo("#main #skills .bg #did-you-know", {
 });
 
 
-//let projects = gsap.utils.toArray("#main #projects .project")
-//
-//gsap.to(projects, {
-//	xPercent: -100 * (projects.length - 1),
-//	ease: "none",
-//
-//	scrollTrigger: {
-//		trigger: "#main #projects",
-//		pin: true, scrub: 0,
-//
-//		snap: 1 / (projects.length - 1),
-//		end: () => "+=" + document.querySelector("#projects").offsetWidth
-//	}
-//})
-
-
 
 let prj_intro_tl = gsap.timeline({
 	scrollTrigger: {
@@ -607,23 +579,10 @@ prj_intro_tl.fromTo("#main #projects .content", { autoAlpha: 0 }, {
 	autoAlpha: 1,
 })
 
-//let mrk_prj_tl = gsap.timeline({
-//	scrollTrigger: {
-//		trigger: "#main #projects .project#markview",
-//		start: "center center",
-//		end: "center center",
-//
-//		markers: true,
-//		horizontal: true
-//	}
-//})
-//
-//mrk_prj_tl.to("#main #projects .project#markview", {
-//	autoAlpha: 0,
-//	y: gsap.utils.random(-100, -150, 5, true)
-//})
 
-let mrk_tl = gsap.timeline({ paused: true });
+
+
+let mrk_tl = gsap.timeline({ paused: true, onComplete: () => { window.location.href = "https://github.com/OXY2DEV/markview.nvim" } });
 
 mrk_tl.fromTo("#main #projects .bg .mrk-txt, #main #projects .bg .mrk-prv", {
 	y: 100, autoAlpha: 0
@@ -632,7 +591,7 @@ mrk_tl.fromTo("#main #projects .bg .mrk-txt, #main #projects .bg .mrk-prv", {
 	stagger: 0.1, duration: 0.25
 })
 
-let hlp_tl = gsap.timeline({ paused: true });
+let hlp_tl = gsap.timeline({ paused: true, onComplete: () => { window.location.href = "https://github.com/OXY2DEV/helpview.nvim" } });
 
 hlp_tl.fromTo("#main #projects .bg .hlp-txt, #main #projects .bg .hlp-prv", {
 	y: 100, autoAlpha: 0
@@ -641,7 +600,7 @@ hlp_tl.fromTo("#main #projects .bg .hlp-txt, #main #projects .bg .hlp-prv", {
 	stagger: 0.1, duration: 0.25
 })
 
-let prt_tl = gsap.timeline({ paused: true });
+let prt_tl = gsap.timeline({ paused: true, onComplete: () => { window.location.href = "https://github.com/OXY2DEV/OXY2DEV-s-portfolio" } });
 
 prt_tl.fromTo("#main #projects .bg .site-npm, #main #projects .bg .site-vite", {
 	y: 100, autoAlpha: 0
@@ -662,7 +621,6 @@ let mrk_link = document.querySelector("#main #projects .content .project#markvie
 let hlp_link = document.querySelector("#main #projects .content .project#helpview");
 let prt_link = document.querySelector("#main #projects .content .project#portfolio");
 
-//mrk_link.onclick = () => { mrk_tl.play(); };
 mrk_link.onmouseenter = () => { mrk_tl.play(); };
 mrk_link.onmouseleave = () => { mrk_tl.reverse(); };
 
