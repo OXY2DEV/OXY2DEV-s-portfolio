@@ -448,6 +448,17 @@ function align_gradient (mouseEvent) {
 	gsap.to(border, { backgroundPositionY: "calc(" + Y.toString() + "px - 5rem)" });
 }
 
+function align_glow (mouseEvent) {
+	let X = mouseEvent.clientX;
+	let Y = mouseEvent.clientY;
+	let target = document.querySelector("#main #projects .content");
+
+	gsap.to(target, {
+		backgroundPositionX: "calc(" + X.toString() + "px - 25dvw)",
+		backgroundPositionY: "calc(" + Y.toString() + "px - 25dvw)"
+	});
+}
+
 let intro = document.querySelector("#main");
 
 ScrollTrigger.create({
@@ -487,7 +498,7 @@ let skill_tl = gsap.timeline({
 skill_tl.fromTo(".slider-left", { yPercent: 0 }, {
 	yPercent: -50,
 }, "<");
-skill_tl.fromTo(".slider-right", { yPercent: -50 }, {
+skill_tl.fromTo(".slider-right", { yPercent: 50 }, {
 	yPercent: 0,
 }, "<");
 
@@ -554,7 +565,7 @@ gsap.fromTo("#main #skills .bg #did-you-know", {
 
 let prj_intro_tl = gsap.timeline({
 	scrollTrigger: {
-		trigger: "#main #projects .project#prj-intro",
+		trigger: "#main #projects",
 		start: "+100 center",
 	}
 })
@@ -565,28 +576,102 @@ prj_intro_tl.fromTo("#main #projects .icons p", { autoAlpha: 0 }, {
 });
 prj_intro_tl.addLabel("icon-reveal");
 
-prj_intro_tl.to("#main #projects .project#prj-intro .icons .left", {
-	y: -25
+prj_intro_tl.to("#main #projects .icons .left", {
+	y: -25,
+	duration: 0.25
 }, "icon-reveal")
-prj_intro_tl.to("#main #projects .project#prj-intro .icons .right", {
-	y: 25
+prj_intro_tl.to("#main #projects .icons .right", {
+	y: 25,
+	duration: 0.25
 }, "icon-reveal")
 
-prj_intro_tl.fromTo("#main #projects .project#prj-intro .section-name span", { y: 100 }, {
-	y: 0,
+prj_intro_tl.fromTo("#main #projects .bg .section-name span.left", { y: 100, autoAlpha: 0 }, {
+	y: 0, autoAlpha: 1,
+
 	duration: 0.2,
-	stagger: 0.05
+	stagger: { each: 0.05, from: "start" }
+}, "icon-reveal")
+prj_intro_tl.fromTo("#main #projects .bg .section-name span.right", { y: -100, autoAlpha: 0 }, {
+	y: 0, autoAlpha: 1,
+
+	duration: 0.2,
+	stagger: { each: 0.05, from: "end" }
 }, "icon-reveal")
 
 
-let mrk_prj_tl = gsap.timeline({
-	scrollTrigger: {
-		trigger: "#main #projects .project#markview",
-		start: "+100 center",
-	}
+prj_intro_tl.to("#main #projects .bg .section-name", {
+	autoAlpha: 0,
+	delay: 0.5
+})
+prj_intro_tl.fromTo("#main #projects .content", { autoAlpha: 0 }, {
+	autoAlpha: 1,
+})
+
+//let mrk_prj_tl = gsap.timeline({
+//	scrollTrigger: {
+//		trigger: "#main #projects .project#markview",
+//		start: "center center",
+//		end: "center center",
+//
+//		markers: true,
+//		horizontal: true
+//	}
+//})
+//
+//mrk_prj_tl.to("#main #projects .project#markview", {
+//	autoAlpha: 0,
+//	y: gsap.utils.random(-100, -150, 5, true)
+//})
+
+let mrk_tl = gsap.timeline({ paused: true });
+
+mrk_tl.fromTo("#main #projects .bg .mrk-txt, #main #projects .bg .mrk-prv", {
+	y: 100, autoAlpha: 0
+}, {
+	y: 0, autoAlpha: 1,
+	stagger: 0.1, duration: 0.25
+})
+
+let hlp_tl = gsap.timeline({ paused: true });
+
+hlp_tl.fromTo("#main #projects .bg .hlp-txt, #main #projects .bg .hlp-prv", {
+	y: 100, autoAlpha: 0
+}, {
+	y: 0, autoAlpha: 1,
+	stagger: 0.1, duration: 0.25
+})
+
+let prt_tl = gsap.timeline({ paused: true });
+
+prt_tl.fromTo("#main #projects .bg .site-npm, #main #projects .bg .site-vite", {
+	y: 100, autoAlpha: 0
+}, {
+	y: 0, autoAlpha: 1,
+	stagger: 0.1, duration: 0.25
 })
 
 
 
-intro.addEventListener("mousemove", align_gradient)
+intro.addEventListener("mousemove", event => {
+	align_gradient(event);
+	align_glow(event);
+})
+
+
+let mrk_link = document.querySelector("#main #projects .content .project#markview");
+let hlp_link = document.querySelector("#main #projects .content .project#helpview");
+let prt_link = document.querySelector("#main #projects .content .project#portfolio");
+
+//mrk_link.onclick = () => { mrk_tl.play(); };
+mrk_link.onmouseenter = () => { mrk_tl.play(); };
+mrk_link.onmouseleave = () => { mrk_tl.reverse(); };
+
+hlp_link.onmouseenter = () => { hlp_tl.play(); };
+hlp_link.onmouseleave = () => { hlp_tl.reverse(); };
+
+prt_link.onmouseenter = () => { prt_tl.play(); };
+prt_link.onmouseleave = () => { prt_tl.reverse(); };
+
+
+
 
