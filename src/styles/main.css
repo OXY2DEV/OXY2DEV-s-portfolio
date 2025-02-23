@@ -1,0 +1,186 @@
+:root {
+	--bg: #1E1E2E;
+	--fg: #CDD6F4;
+}
+
+/* Dark mode */
+/* TODO, change to dark */
+@media (prefers-color-scheme: light) {
+	:root {
+		--bg: #EFF1F5;
+		--fg: #4C4F69;
+	}
+}
+
+* {
+	margin: 0;
+	padding: 0;
+
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--fg);
+}
+
+#loader {
+	position: absolute;
+
+	top: 0;
+	left: 0;
+
+	width: 100dvw;
+	height: 100dvh;
+
+	background-color: var(--bg);
+	color: var(--fg);
+
+	justify-content: center;
+	align-content: center;
+
+	.atom {
+		---size: 200px;
+
+		position: absolute;
+
+		top: 50dvh;
+		left: 50dvw;
+
+		transform: translate(-50%, -50%);
+
+		width: var(---size);
+		height: var(---size);
+
+		.atom-container {
+			position: relative;
+
+			width: 100%;
+			height: 100%;
+
+			justify-content: center;
+			align-content: center;
+
+			--orbit-size: 1px;
+			--electron-size: 6px;
+
+			.core {
+				position: absolute;
+
+				top: 35%;
+				left: 35%;
+
+				width: 30%;
+				height: 30%;
+
+				background-image: radial-gradient(at 25% 25%, #89B4FA 0%, transparent 90%);
+				border-radius: 50%;
+			}
+
+			.orbit-1 {
+				position: absolute;
+
+				top: 25%;
+				left: 25%;
+
+				width: 50%;
+				height: 50%;
+
+				border: var(--orbit-size) solid var(--fg);
+				border-radius: 50%;
+
+				opacity: 0.2;
+
+				.electron {
+					position: absolute;
+
+					top: 0;
+					left: 0;
+
+					width: 100%;
+					height: 100%;
+
+					&::before {
+						content: "";
+
+						position: absolute;
+
+						top: calc(-1 * ( var(--electron-size) / 2 ));
+						left: calc(50% - ( var(--electron-size) / 2 ));
+
+						width: var(--electron-size);
+						height: var(--electron-size);
+
+						background-color: var(--fg);
+						border-radius: 50%;
+					}
+				}
+
+				.electron-2 {
+					transform: rotate(180deg);
+				}
+			}
+
+			.orbit-2 {
+				position: absolute;
+
+				top: 15%;
+				left: 15%;
+
+				width: 70%;
+				height: 70%;
+
+				border: var(--orbit-size) solid var(--fg);
+				border-radius: 50%;
+
+				opacity: 0.2;
+
+				.electron {
+					position: absolute;
+
+					top: 0;
+					left: 0;
+
+					width: 100%;
+					height: 100%;
+
+					&::before {
+						content: "";
+
+						position: absolute;
+
+						top: calc(-1 * ( var(--electron-size) / 2 ));
+						left: calc(50% - ( var(--electron-size) / 2 ));
+
+						width: var(--electron-size);
+						height: var(--electron-size);
+
+						background-color: var(--fg);
+						border-radius: 50%;
+					}
+				}
+
+				.electron-4 {
+					transform: rotate(60deg);
+				}
+
+				.electron-5 {
+					transform: rotate(120deg);
+				}
+
+				.electron-6 {
+					transform: rotate(180deg);
+				}
+
+				.electron-7 {
+					transform: rotate(240deg);
+				}
+
+				.electron-8 {
+					transform: rotate(300deg);
+				}
+			}
+
+		}
+	}
+}
