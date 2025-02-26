@@ -2,7 +2,10 @@
 	--bg: #1E1E2E;
 	--fg: #CDD6F4;
 
-	--layer-0: #9399B2;
+	--layer-0: #7F849C;
+	--layer-1: #9399B2;
+	--layer-2: #A6ADC8;
+	--layer-3: #BAC2DE;
 }
 
 /* Dark mode */
@@ -12,6 +15,14 @@
 		--bg: #EFF1F5;
 		--fg: #4C4F69;
 	}
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/JetBrainsMonoNerdFont-Regular.ttf");
 }
 
 * {
@@ -24,6 +35,8 @@
 body {
 	background-color: var(--bg);
 	color: var(--fg);
+
+	font-family: "JetBrains Mono"
 }
 
 #loader {
@@ -34,6 +47,8 @@ body {
 
 	width: 100dvw;
 	height: 100dvh;
+
+	overflow: hidden;
 
 	background-color: var(--bg);
 	color: var(--fg);
@@ -63,7 +78,7 @@ body {
 			justify-content: center;
 			align-content: center;
 
-			--orbit-size: 1px;
+			--orbit-size: 0.5px;
 			--electron-size: 6px;
 
 			.background {
@@ -72,59 +87,26 @@ body {
 				width: 100%;
 				height: 100%;
 
-				.hider {
-					--w: 100%;
+				transform: rotate(45deg);
 
-					position: absolute;
-
-					top: 0;
-					left: calc(50% - (var(--w) / 2));
-
-					width: var(--w);
-					height: 100%;
-
-					background-color: var(--bg);
-					transform: rotate(45deg);
+				path {
+					transform-origin: center;
 				}
+			}
 
-				.circle-left {
-					position: absolute;
+			.hider {
+				--w: 10%;
 
-					top: 15%;
-					left: 15%;
+				position: absolute;
 
-					width: 70%;
-					height: 70%;
+				top: 0;
+				left: calc(50% - (var(--w) / 2));
 
-					background-color: var(--fg);
-					border-radius: 50%;
-				}
+				width: var(--w);
+				height: 100%;
 
-				.circle-right {
-					position: absolute;
-
-					top: 15%;
-					left: 15%;
-
-					width: 70%;
-					height: 70%;
-
-					background-color: var(--fg);
-					border-radius: 50%;
-				}
-
-				.hole {
-					position: absolute;
-
-					top: 25%;
-					left: 25%;
-
-					width: 50%;
-					height: 50%;
-
-					background-color: var(--bg);
-					border-radius: 50%;
-				}
+				background-color: var(--bg);
+				transform: rotate(45deg);
 			}
 
 			.core {
@@ -172,7 +154,7 @@ body {
 						width: var(--electron-size);
 						height: var(--electron-size);
 
-						background-color: var(--layer-0);
+						background-color: var(--layer-1);
 						border-radius: 50%;
 					}
 				}
@@ -214,7 +196,7 @@ body {
 						width: var(--electron-size);
 						height: var(--electron-size);
 
-						background-color: var(--layer-0);
+						background-color: var(--layer-1);
 						border-radius: 50%;
 					}
 				}
@@ -240,5 +222,58 @@ body {
 				}
 			}
 		}
+	}
+
+	.loader-text {
+		position: absolute;
+
+		bottom: 0;
+		left: 0;
+
+		width: 100dvw;
+		height: 20dvh;
+
+		min-height: 200px;
+		padding: 20dvw;
+
+		.entry {
+			display: grid;
+
+			padding-bottom: 0.25rem;
+
+			grid-auto-flow: column;
+			grid-auto-columns: auto 1fr;
+			grid-column-gap: 10px;
+
+			color: var(--fg);
+
+			.icon {
+				width: 1rem;
+				height: 1rem;
+			}
+
+			.text {
+				align-content: center;
+
+				font-size: 0.5rem;
+				opacity: 0.75;
+			}
+		}
+	}
+
+	.loader-text-overlay {
+		position: absolute;
+
+		bottom: 0;
+		left: 0;
+
+		z-index: 10;
+
+		width: 100dvw;
+		height: 20dvh;
+
+		min-height: 200px;
+
+		background-image: linear-gradient(to bottom, transparent 50%, var(--bg) 80%);
 	}
 }
