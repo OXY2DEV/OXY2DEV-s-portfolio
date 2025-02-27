@@ -26,7 +26,8 @@
 	--dark-s2: #7F849C;
 	--dark-s3: #A6ADC8;
 
-	transition: 0.25s;
+
+	--tr-dur: 0.25s;
 }
 
 /* Dark mode */
@@ -35,30 +36,51 @@ body[data-theme="dark"] {
 	background-color: var(--dark-bg);
 	color: var(--dark-fg);
 
+	transition-property: background-color, color;
+	transition-duration: var(--tr-dur);
+
 	#loader {
 		background-color: var(--dark-bg);
 		color: var(--dark-fg);
+
+		transition-property: background-color, color;
+		transition-duration: var(--tr-dur);
 
 		.atom {
 			.atom-container {
 				.background {
 					stroke: var(--dark-fg);
+
+					transition-property: stroke;
+					transition-duration: var(--tr-dur);
 				}
 
 				.hider {
 					background-color: var(--dark-bg);
+
+					transition-property: background-color;
+					transition-duration: var(--tr-dur);
 				}
 
 				.core {
 					background-image: radial-gradient(at 25% 25%, var(--dark-c5) 0%, transparent 90%);
+
+					transition-property: background-image;
+					transition-duration: var(--tr-dur);
 				}
 
 				.orbit {
 					border-color: var(--dark-s2);
 
+					transition-property: background-image;
+					transition-duration: var(--tr-dur);
+
 					.electron {
 						&::before {
 							background-color: var(--dark-s3);
+
+							transition-property: background-color;
+							transition-duration: var(--tr-dur);
 						}
 					}
 				}
@@ -67,26 +89,44 @@ body[data-theme="dark"] {
 
 		.loader-text {
 			color: var(--dark-fg);
+
+			transition-property: color;
+			transition-duration: var(--tr-dur);
 		}
 
 		.loader-text-overlay {
 			background-image: linear-gradient(to bottom, transparent 50%, var(--dark-bg) 80%);
+
+			transition-property: background-image;
+			transition-duration: var(--tr-dur);
 		}
 	}
 
 	#body {
-		background-image: conic-gradient(from -90deg, var(--dark-bg), var(--dark-fg));
-
 		.intro {
+			background-image: conic-gradient(from -90deg, var(--dark-bg), var(--dark-fg));
+
+			transition-property: background-image;
+			transition-duration: var(--tr-dur);
+
 			.name {
 				color: var(--dark-fg);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
 			}
 
 			.desc {
 				color: var(--dark-bg);
 
-				.color-1 , .color-2, .color-3, .color-4, .color-5 K{
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+
+				.color-1 , .color-2, .color-3, .color-4, .color-5 {
 					background-color: var(--dark-bg);
+
+					transition-property: background-color, color;
+					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -96,8 +136,14 @@ body[data-theme="dark"] {
 
 				border-color: var(--light-s1);
 
+				transition-property: color, background-color, border-color;
+				transition-duration: var(--tr-dur);
+
 				&::before {
 					color: var(--light-c2);
+
+					transition-property: color;
+					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -107,8 +153,14 @@ body[data-theme="dark"] {
 
 				border-color: var(--dark-s1);
 
+				transition-property: color, background-color, border-color;
+				transition-duration: var(--tr-dur);
+
 				&::before {
 					color: var(--dark-c5);
+
+					transition-property: color;
+					transition-duration: var(--tr-dur);
 				}
 			}
 		}
@@ -116,22 +168,37 @@ body[data-theme="dark"] {
 
 	.color-1 {
 		color: var(--dark-c1);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-2 {
 		color: var(--dark-c2);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-3 {
 		color: var(--dark-c3);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-4 {
 		color: var(--dark-c4);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-5 {
 		color: var(--dark-c5);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 }
 
@@ -141,30 +208,51 @@ body[data-theme="light"] {
 	background-color: var(--light-bg);
 	color: var(--light-fg);
 
+	transition-property: background-color, color;
+	transition-duration: var(--tr-dur);
+
 	#loader {
 		background-color: var(--light-bg);
 		color: var(--light-fg);
+
+		transition-property: background-color, color;
+		transition-duration: var(--tr-dur);
 
 		.atom {
 			.atom-container {
 				.background {
 					stroke: var(--light-fg);
+
+					transition-property: stroke;
+					transition-duration: var(--tr-dur);
 				}
 
 				.hider {
 					background-color: var(--light-bg);
+
+					transition-property: background-color;
+					transition-duration: var(--tr-dur);
 				}
 
 				.core {
 					background-image: radial-gradient(at 25% 25%, var(--light-c5) 0%, transparent 90%);
+
+					transition-property: background-image;
+					transition-duration: var(--tr-dur);
 				}
 
 				.orbit {
 					border-color: var(--light-s2);
 
+					transition-property: background-image;
+					transition-duration: var(--tr-dur);
+
 					.electron {
 						&::before {
 							background-color: var(--light-s3);
+
+							transition-property: background-color;
+							transition-duration: var(--tr-dur);
 						}
 					}
 				}
@@ -173,26 +261,44 @@ body[data-theme="light"] {
 
 		.loader-text {
 			color: var(--light-fg);
+
+			transition-property: color;
+			transition-duration: var(--tr-dur);
 		}
 
 		.loader-text-overlay {
 			background-image: linear-gradient(to bottom, transparent 50%, var(--light-bg) 80%);
+
+			transition-property: background-image;
+			transition-duration: var(--tr-dur);
 		}
 	}
 
 	#body {
-		background-image: conic-gradient(from -90deg, var(--light-bg), var(--light-fg));
-
 		.intro {
+			background-image: conic-gradient(from -90deg, var(--light-bg), var(--light-fg));
+
+			transition-property: background-image;
+			transition-duration: var(--tr-dur);
+
 			.name {
 				color: var(--light-fg);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
 			}
 
 			.desc {
 				color: var(--light-bg);
 
-				.color-1 , .color-2, .color-3, .color-4, .color-5 K{
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+
+				.color-1 , .color-2, .color-3, .color-4, .color-5 {
 					background-color: var(--light-bg);
+
+					transition-property: background-color, color;
+					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -202,8 +308,14 @@ body[data-theme="light"] {
 
 				border-color: var(--dark-s1);
 
+				transition-property: color, background-color, border-color;
+				transition-duration: var(--tr-dur);
+
 				&::before {
 					color: var(--dark-c2);
+
+					transition-property: color;
+					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -213,8 +325,14 @@ body[data-theme="light"] {
 
 				border-color: var(--light-s1);
 
+				transition-property: color, background-color, border-color;
+				transition-duration: var(--tr-dur);
+
 				&::before {
 					color: var(--light-c4);
+
+					transition-property: color;
+					transition-duration: var(--tr-dur);
 				}
 			}
 		}
@@ -222,22 +340,37 @@ body[data-theme="light"] {
 
 	.color-1 {
 		color: var(--light-c1);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-2 {
 		color: var(--light-c2);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-3 {
 		color: var(--light-c3);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-4 {
 		color: var(--light-c4);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-5 {
 		color: var(--light-c5);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 }
 

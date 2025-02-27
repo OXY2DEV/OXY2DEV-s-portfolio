@@ -260,14 +260,21 @@ init.fromTo("#loader .atom .background", {
 	ease: "power4.out"
 }, "-=0.25");
 
-const computedStyle = getComputedStyle(document.documentElement);
-
-init.fromTo("#loader .atom .background .circle-right", {
-	stroke: computedStyle.getPropertyValue("--fg") || "#CDD6F4"
-}, {
-	stroke: computedStyle.getPropertyValue("--color-4") || "#89B4FA",
-	ease: "power4.out"
-}, "-=0.25");
+if (siteTheme == "dark") {
+	init.fromTo("#loader .atom .background .circle-right", {
+		stroke: "var(--dark-fg)"
+	}, {
+		stroke: "var(--dark-c5)",
+		ease: "power4.out"
+	}, "-=0.25");
+} else {
+	init.fromTo("#loader .atom .background .circle-right", {
+		stroke: "var(--light-fg)"
+	}, {
+		stroke: "var(--light-c5)",
+		ease: "power4.out"
+	}, "-=0.25");
+}
 
 init.play();
 
@@ -287,21 +294,28 @@ reveal.to("#loader", {
 
 if (siteTheme == "dark") {
 	reveal.fromTo("#body .intro", {
-		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg) 100%, var(--dark-fg)) 100%"
+		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg) 100%, var(--dark-fg) 100%)"
 	}, {
-		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg)   0%, var(--dark-fg)) 100%",
+		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg) 0%, var(--dark-fg) 100%)",
 		delay: 1,
 
-		ease: "sine.in"
+		ease: "sine.in",
+		onComplete: () => {
+			let intro: HTMLDivElement | null = document.querySelector("#body .intro");
+
+			if (intro) {
+				intro.style.backgroundImage = "";
+			}
+		}
 	});
 } else {
 	reveal.fromTo("#body .intro", {
-		backgroundImage: "conic-gradient(from -90deg, var(--light-bg) 100%, var(--light-fg)) 100%"
+		backgroundImage: "conic-gradient(from -90deg, var(--light-bg) 100%, var(--light-fg) 100%)"
 	}, {
-		backgroundImage: "conic-gradient(from -90deg, var(--light-bg)   0%, var(--light-fg)) 100%",
+		backgroundImage: "conic-gradient(from -90deg, var(--light-bg) 0%, var(--light-fg) 100%)",
 		delay: 1,
 
-		ease: "sine.in"
+		ease: "sine.in",
 	});
 }
 
@@ -325,10 +339,18 @@ reveal.fromTo("#body .intro .desc p", {
 	duration: 0.5
 }, "Info");
 
-reveal.to("#body .intro .name p .two", {
-	color: computedStyle.getPropertyValue("--color-4") || "#89B4FA",
-	duration: 0.5
-});
+if (siteTheme == "dark") {
+	reveal.to("#body .intro .name p .two", {
+		color: "var(--dark-c5)",
+		duration: 0.5
+	});
+} else {
+	reveal.to("#body .intro .name p .two", {
+		color: "var(--light-c5)",
+		duration: 0.5
+	});
+}
+
 
 reveal.fromTo("#body .intro .upper, #body .intro .lower", {
 	y: 16,
@@ -347,7 +369,6 @@ reveal.fromTo("#body .intro .scroll", {
 	opacity: 1,
 	duration: 0.25,
 }, "-=0.25");
-
 
 
 scrollIconTL.fromTo("#body .intro .scroll path", {
