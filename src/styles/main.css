@@ -54,6 +54,10 @@ body[data-theme="dark"] {
 					transition-duration: var(--tr-dur);
 				}
 
+				.circle-left, .circle-right {
+					stroke: var(--dark-fg);
+				}
+
 				.circle-right.changed {
 					stroke: var(--dark-c5);
 				}
@@ -106,6 +110,51 @@ body[data-theme="dark"] {
 	}
 
 	#body {
+		.block-reverse {
+			color: var(--light-fg);
+			background-color: var(--light-bg);
+
+			border-color: var(--light-s1);
+
+			transition-property: color, background-color, border-color;
+			transition-duration: var(--tr-dur);
+
+			.color-1 {
+				color: var(--light-c1);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-2 {
+				color: var(--light-c2);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-3 {
+				color: var(--light-c3);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-4 {
+				color: var(--light-c4);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-5 {
+				color: var(--light-c5);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+		}
+
 		.intro {
 			background-image: conic-gradient(from -90deg, var(--dark-bg), var(--dark-fg));
 
@@ -134,14 +183,6 @@ body[data-theme="dark"] {
 			}
 
 			.upper {
-				color: var(--light-fg);
-				background-color: var(--light-bg);
-
-				border-color: var(--light-s1);
-
-				transition-property: color, background-color, border-color;
-				transition-duration: var(--tr-dur);
-
 				&::before {
 					color: var(--light-c2);
 
@@ -229,6 +270,10 @@ body[data-theme="light"] {
 					transition-duration: var(--tr-dur);
 				}
 
+				.circle-left, .circle-right {
+					stroke: var(--light-fg);
+				}
+
 				.circle-right.changed {
 					stroke: var(--light-c5);
 				}
@@ -281,6 +326,51 @@ body[data-theme="light"] {
 	}
 
 	#body {
+		.block-reverse {
+			color: var(--dark-fg);
+			background-color: var(--dark-bg);
+
+			border-color: var(--dark-s1);
+
+			transition-property: color, background-color, border-color;
+			transition-duration: var(--tr-dur);
+
+			.color-1 {
+				color: var(--dark-c1);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-2 {
+				color: var(--dark-c2);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-3 {
+				color: var(--dark-c3);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-4 {
+				color: var(--dark-c4);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.color-5 {
+				color: var(--dark-c5);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+		}
+
 		.intro {
 			background-image: conic-gradient(from -90deg, var(--light-bg), var(--light-fg));
 
@@ -309,14 +399,6 @@ body[data-theme="light"] {
 			}
 
 			.upper {
-				color: var(--dark-fg);
-				background-color: var(--dark-bg);
-
-				border-color: var(--dark-s1);
-
-				transition-property: color, background-color, border-color;
-				transition-duration: var(--tr-dur);
-
 				&::before {
 					color: var(--dark-c2);
 
@@ -678,11 +760,12 @@ body {
 			&::before {
 				position: absolute;
 
-				top: 5px;
-				right: 5px;
+				top: 0;
+				right: 0;
+
+				padding: 5px;
 
 				content: " Shell";
-
 				text-align: right;
 			}
 		}
@@ -694,16 +777,17 @@ body {
 			border-width: 1px;
 			border-style: solid;
 
-			transform: rotateX(15deg) rotateY(-10deg) rotateZ(0deg);
+			transform: rotateX(30deg) rotateY(-15deg) rotateZ(0deg);
 
 			&::before {
 				position: absolute;
 
-				top: 5px;
-				right: 5px;
+				top: 0;
+				right: 0;
+
+				padding: 5px;
 
 				content: " Lua";
-
 				text-align: right;
 			}
 		}
