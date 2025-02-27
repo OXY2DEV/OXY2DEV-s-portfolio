@@ -31,7 +31,6 @@
 }
 
 /* Dark mode */
-/* TODO, change to dark */
 body[data-theme="dark"] {
 	background-color: var(--dark-bg);
 	color: var(--dark-fg);
@@ -53,6 +52,10 @@ body[data-theme="dark"] {
 
 					transition-property: stroke;
 					transition-duration: var(--tr-dur);
+				}
+
+				.circle-right.changed {
+					stroke: var(--dark-c5);
 				}
 
 				.hider {
@@ -202,8 +205,7 @@ body[data-theme="dark"] {
 	}
 }
 
-/* Dark mode */
-/* TODO, change to dark */
+/* Light mode */
 body[data-theme="light"] {
 	background-color: var(--light-bg);
 	color: var(--light-fg);
@@ -225,6 +227,10 @@ body[data-theme="light"] {
 
 					transition-property: stroke;
 					transition-duration: var(--tr-dur);
+				}
+
+				.circle-right.changed {
+					stroke: var(--light-c5);
 				}
 
 				.hider {

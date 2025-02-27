@@ -145,7 +145,7 @@ let intervalID: number;
 function createLoaderMsg() {
 	if (loaderMsg.length < 1) {
 		clearInterval(intervalID);
-		reveal.play();
+		setTimeout(() => { reveal.play(); }, 500);
 		return;
 	} else if (loadedPage == true) {
 		loaderMsg = loaderMsg.splice(-1);
@@ -260,21 +260,33 @@ init.fromTo("#loader .atom .background", {
 	ease: "power4.out"
 }, "-=0.25");
 
-if (siteTheme == "dark") {
-	init.fromTo("#loader .atom .background .circle-right", {
-		stroke: "var(--dark-fg)"
-	}, {
-		stroke: "var(--dark-c5)",
-		ease: "power4.out"
-	}, "-=0.25");
-} else {
-	init.fromTo("#loader .atom .background .circle-right", {
-		stroke: "var(--light-fg)"
-	}, {
-		stroke: "var(--light-c5)",
-		ease: "power4.out"
-	}, "-=0.25");
-}
+init.fromTo("#loader .atom .background .circle-right", {
+	stroke: () => {
+		if (siteTheme == "dark") {
+			return colorScheme.darkFg;
+		} else {
+			console.log("here")
+			return colorScheme.lightFg;
+		}
+	}
+}, {
+	stroke: () => {
+		if (siteTheme == "dark") {
+			return colorScheme.darkC5;
+		} else {
+			return colorScheme.lightC5;
+		}
+	},
+	ease: "power4.out",
+
+	onComplete: () => {
+		let intro: SVGPathElement | null = document.querySelector("#loader .atom .background .circle-right");
+
+		if (intro) {
+			intro.classList.add("changed");
+		}
+	}
+}, "-=0.25");
 
 init.play();
 
@@ -292,32 +304,33 @@ reveal.to("#loader", {
 	ease: "power4.in"
 }, "<");
 
-if (siteTheme == "dark") {
-	reveal.fromTo("#body .intro", {
-		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg) 100%, var(--dark-fg) 100%)"
-	}, {
-		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg) 0%, var(--dark-fg) 100%)",
-		delay: 1,
+reveal.fromTo("#body .intro", {
+	backgroundImage: () => {
+		if (siteTheme == "dark") {
+			return "conic-gradient(from -90deg, var(--dark-bg) 100%, var(--dark-fg) 100%)";
+		} else {
+			return "conic-gradient(from -90deg, var(--light-bg) 100%, var(--light-fg) 100%)";
+		};
+	},
+}, {
+	backgroundImage: () => {
+		if (siteTheme == "dark") {
+			return "conic-gradient(from -90deg, var(--dark-bg) 0%, var(--dark-fg) 100%)";
+		} else {
+			return "conic-gradient(from -90deg, var(--light-bg) 0%, var(--light-fg) 100%)";
+		};
+	},
+	delay: 1,
 
-		ease: "sine.in",
-		onComplete: () => {
-			let intro: HTMLDivElement | null = document.querySelector("#body .intro");
+	ease: "sine.in",
+	onComplete: () => {
+		let intro: HTMLDivElement | null = document.querySelector("#body .intro");
 
-			if (intro) {
-				intro.style.backgroundImage = "";
-			}
+		if (intro) {
+			intro.style.backgroundImage = "";
 		}
-	});
-} else {
-	reveal.fromTo("#body .intro", {
-		backgroundImage: "conic-gradient(from -90deg, var(--light-bg) 100%, var(--light-fg) 100%)"
-	}, {
-		backgroundImage: "conic-gradient(from -90deg, var(--light-bg) 0%, var(--light-fg) 100%)",
-		delay: 1,
-
-		ease: "sine.in",
-	});
-}
+	}
+});
 
 reveal.addLabel("Info");
 
