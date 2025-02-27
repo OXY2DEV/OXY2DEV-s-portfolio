@@ -3,35 +3,138 @@ import "../styles/main.css";
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 
-import { createIcons, icons } from "lucide";
+import { createIcons, createElement, IconNode, ScrollText, Spline, Mouse, Aperture, CircleCheckBig } from "lucide";
+import { Activity, Sparkles } from "lucide";
 import eruda from "eruda";
+
+let colorScheme: { [key: string]: string } = {};
+let siteTheme: "dark" | "light" = "dark";
+
+/**
+	*
+	* Sets the site theme(dark/light)
+*/
+function setTheme (theme?: "dark" | "light") {
+	const media = window.matchMedia("(prefers-color-scheme: dark)");
+	let body = document.querySelector("body");
+
+	if (body == null) {
+		return;
+	} else if (theme != null) {
+		siteTheme = theme;
+		body.setAttribute("data-theme", theme);
+	} else if (media.matches) {
+		siteTheme = "dark";
+		body.setAttribute("data-theme", "dark");
+	} else {
+		siteTheme = "light";
+		body.setAttribute("data-theme", "light");
+	}
+
+	updateColorscheme();
+}
+
+/**
+	*
+	* Sets the site color-scheme.
+*/
+function updateColorscheme () {
+	const computedStyle = getComputedStyle(document.documentElement);
+
+	colorScheme = {
+		lightBg: computedStyle.getPropertyValue("--light-bg"),
+		lightFg: computedStyle.getPropertyValue("--light-fg"),
+
+		lightC1: computedStyle.getPropertyValue("--light-c1"),
+		lightC2: computedStyle.getPropertyValue("--light-c2"),
+		lightC3: computedStyle.getPropertyValue("--light-c3"),
+		lightC4: computedStyle.getPropertyValue("--light-c4"),
+		lightC5: computedStyle.getPropertyValue("--light-c5"),
+
+		lightS1: computedStyle.getPropertyValue("--light-s1"),
+		lightS2: computedStyle.getPropertyValue("--light-s2"),
+		lightS3: computedStyle.getPropertyValue("--light-s3"),
+
+
+		darkBg: computedStyle.getPropertyValue("--dark-bg"),
+		darkFg: computedStyle.getPropertyValue("--dark-fg"),
+
+		darkC1: computedStyle.getPropertyValue("--dark-c1"),
+		darkC2: computedStyle.getPropertyValue("--dark-c2"),
+		darkC3: computedStyle.getPropertyValue("--dark-c3"),
+		darkC4: computedStyle.getPropertyValue("--dark-c4"),
+		darkC5: computedStyle.getPropertyValue("--dark-c5"),
+
+		darkS1: computedStyle.getPropertyValue("--dark-s1"),
+		darkS2: computedStyle.getPropertyValue("--dark-s2"),
+		darkS3: computedStyle.getPropertyValue("--dark-s3"),
+	};
+};
+
+setTheme();
+
+document.querySelector("body")?.addEventListener("click", () => {
+	if (siteTheme == "light") {
+		setTheme("dark");
+	} else {
+		setTheme("light");
+	}
+})
 
 /**
 	*
 	* Has the page loaded?
 */
 let loadedPage: boolean = false;
-
-document.onload = () => { loadedPage = true; };
+window.onload = () => { loadedPage = true; };
 
 eruda.init();
 
 gsap.registerPlugin(TextPlugin)
-createIcons({ icons });
+createIcons({
+	icons: { Mouse }
+});
+
+/**
+	*
+	* Page initiated!
+*/
+let init = gsap.timeline({
+	delay: 0.5, paused: true,
+
+	onStart: () => {
+		intervalID = setInterval(createLoaderMsg, 1250);
+	}
+});
+
+/**
+	*
+	* Page reveal!
+*/
+let reveal = gsap.timeline({ delay: 0.25, paused: true });
+
+/**
+	*
+	* Scroll icon animator
+*/
+let scrollIconTL = gsap.timeline({
+	repeat: -1, repeatDelay: 2.5,
+	yoyo: true,
+});
 
 /**
 	*
 	* Messages to load!
 */
-let loaderMsg: Array<Array<string>> = [
-	[ "activity", "Fetching site data" ],
+let loaderMsg: Array<[ IconNode, string ]> = [
+	[ Activity, "Fetching site data" ],
 
-	[ "sparkles", "Applying styles" ],
-	[ "scroll-text", "Loading scripts" ],
-	[ "spline", "Importing GSAP" ],
-	[ "mouse", "Importing Lenis" ],
-	[ "aperture", "Getting icons" ],
-	[ "circle-check-big", "Ready!" ],
+	[ Sparkles, "Applying styles" ],
+	[ ScrollText, "Loading scripts" ],
+	[ Spline, "Importing GSAP" ],
+	[ Mouse, "Importing Lenis" ],
+	[ Aperture, "Getting icons" ],
+	[ CircleCheckBig, "Ready!" ],
 ];
 
 /* |fS "Loader functions"
@@ -40,24 +143,23 @@ let loaderMsg: Array<Array<string>> = [
 let intervalID: number;
 
 function createLoaderMsg() {
-	if (loadedPage == true || loaderMsg.length < 1) {
+	if (loaderMsg.length < 1) {
 		clearInterval(intervalID);
+		reveal.play();
 		return;
+	} else if (loadedPage == true) {
+		loaderMsg = loaderMsg.splice(-1);
 	}
 
 	let msgIndex: number = 0; // Math.floor(Math.random() * loaderMsg.length);
-	let msg: Array<string> = loaderMsg[msgIndex];
+	let msg: [ IconNode, string ] = loaderMsg[msgIndex];
 
 	loaderMsg.splice(msgIndex, 1);
 
 	const newHolder: HTMLDivElement = document.createElement("div");
 
-	const newIcon: HTMLDivElement = document.createElement("div");
+	const newIcon: SVGElement = createElement(msg[0], {});
 	const newText: HTMLDivElement = document.createElement("div");
-
-	if (msg[0] != null) {
-		newIcon.setAttribute("data-lucide", msg[0]);
-	}
 
 	newHolder.classList.add("entry");
 
@@ -70,7 +172,6 @@ function createLoaderMsg() {
 	let msgHolder = document.querySelector("#loader .loader-text");
 
 	msgHolder?.prepend(newHolder);
-	createIcons({ icons });
 
 	let revealTL = gsap.timeline();
 
@@ -89,32 +190,9 @@ function createLoaderMsg() {
 		delay: 0.1,
 		duration: 0.5,
 	});
-
-	revealTL.to(newHolder, {
-		opacity: 0,
-
-		delay: 3,
-		duration: 0.25,
-
-		onComplete: () => {
-			newHolder.style.display = "none";
-		}
-	});
 }
 
 /* |fE */
-
-/**
-	*
-	* Page initiated!
-*/
-let init = gsap.timeline({
-	delay: 0.5, paused: true,
-
-	onStart: () => {
-		intervalID = setInterval(createLoaderMsg, 1250);
-	}
-})
 
 init.fromTo("#loader .atom .core", {
 	scale: 0.5,
@@ -178,7 +256,7 @@ init.fromTo("#loader .atom .background", {
 	repeat: 1,
 	yoyo: true,
 
-	duration: 0.25,
+	duration: 0.20,
 	ease: "power4.out"
 }, "-=0.25");
 
@@ -187,9 +265,97 @@ const computedStyle = getComputedStyle(document.documentElement);
 init.fromTo("#loader .atom .background .circle-right", {
 	stroke: computedStyle.getPropertyValue("--fg") || "#CDD6F4"
 }, {
-	stroke: "#89B4FA",
+	stroke: computedStyle.getPropertyValue("--color-4") || "#89B4FA",
 	ease: "power4.out"
 }, "-=0.25");
 
 init.play();
+
+reveal.to("#loader .atom", {
+	scale: 0.75,
+
+	duration: 0.5,
+	ease: "power4.in"
+}, "<");
+
+reveal.to("#loader", {
+	autoAlpha: 0,
+
+	duration: 0.5,
+	ease: "power4.in"
+}, "<");
+
+if (siteTheme == "dark") {
+	reveal.fromTo("#body .intro", {
+		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg) 100%, var(--dark-fg)) 100%"
+	}, {
+		backgroundImage: "conic-gradient(from -90deg, var(--dark-bg)   0%, var(--dark-fg)) 100%",
+		delay: 1,
+
+		ease: "sine.in"
+	});
+} else {
+	reveal.fromTo("#body .intro", {
+		backgroundImage: "conic-gradient(from -90deg, var(--light-bg) 100%, var(--light-fg)) 100%"
+	}, {
+		backgroundImage: "conic-gradient(from -90deg, var(--light-bg)   0%, var(--light-fg)) 100%",
+		delay: 1,
+
+		ease: "sine.in"
+	});
+}
+
+reveal.addLabel("Info");
+
+reveal.fromTo("#body .intro .name p span", {
+	y: 48,
+}, {
+	y: 0,
+	stagger: 0.1,
+	duration: 0.25
+}, "Info");
+
+reveal.fromTo("#body .intro .desc p", {
+	x: 16,
+	opacity: 0,
+}, {
+	x: 0,
+	opacity: 1,
+
+	duration: 0.5
+}, "Info");
+
+reveal.to("#body .intro .name p .two", {
+	color: computedStyle.getPropertyValue("--color-4") || "#89B4FA",
+	duration: 0.5
+});
+
+reveal.fromTo("#body .intro .upper, #body .intro .lower", {
+	y: 16,
+	opacity: 0
+}, {
+	y: 0,
+	opacity: 1,
+
+	duration: 0.5,
+	stagger: 0.25
+}, "-=0.25");
+
+reveal.fromTo("#body .intro .scroll", {
+	opacity: 0
+}, {
+	opacity: 1,
+	duration: 0.25,
+}, "-=0.25");
+
+
+
+scrollIconTL.fromTo("#body .intro .scroll path", {
+	y: -1
+}, {
+	y: 0,
+
+	duration: 0.25,
+	repeat: 1, yoyo: true
+});
 
