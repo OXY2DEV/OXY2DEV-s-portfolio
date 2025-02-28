@@ -119,6 +119,13 @@ body[data-theme="dark"] {
 			transition-property: color, background-color, border-color;
 			transition-duration: var(--tr-dur);
 
+			.color-0 {
+				color: var(--light-s3);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
 			.color-1 {
 				color: var(--light-c1);
 
@@ -174,7 +181,7 @@ body[data-theme="dark"] {
 				transition-property: color;
 				transition-duration: var(--tr-dur);
 
-				.color-1 , .color-2, .color-3, .color-4, .color-5 {
+				.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
 					background-color: var(--dark-bg);
 
 					transition-property: background-color, color;
@@ -208,6 +215,13 @@ body[data-theme="dark"] {
 				}
 			}
 		}
+	}
+
+	.color-0 {
+		color: var(--dark-s3);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-1 {
@@ -335,6 +349,13 @@ body[data-theme="light"] {
 			transition-property: color, background-color, border-color;
 			transition-duration: var(--tr-dur);
 
+			.color-0 {
+				color: var(--dark-s3);
+
+				transition-property: color;
+				transition-duration: var(--tr-dur);
+			}
+
 			.color-1 {
 				color: var(--dark-c1);
 
@@ -390,7 +411,7 @@ body[data-theme="light"] {
 				transition-property: color;
 				transition-duration: var(--tr-dur);
 
-				.color-1 , .color-2, .color-3, .color-4, .color-5 {
+				.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
 					background-color: var(--light-bg);
 
 					transition-property: background-color, color;
@@ -424,6 +445,13 @@ body[data-theme="light"] {
 				}
 			}
 		}
+	}
+
+	.color-0 {
+		color: var(--light-s3);
+
+		transition-property: color;
+		transition-duration: var(--tr-dur);
 	}
 
 	.color-1 {
@@ -731,7 +759,7 @@ body {
 
 			text-align: right;
 
-			.color-1, .color-2, .color-3, .color-4, .color-5 {
+			.color-0, .color-1, .color-2, .color-3, .color-4, .color-5 {
 				padding: 0 2px;
 			}
 		}
@@ -746,6 +774,10 @@ body {
 			border-radius: 5px;
 
 			font-size: 0.5rem;
+
+			.hidden {
+				opacity: 0;
+			}
 		}
 
 		.upper {
@@ -777,7 +809,7 @@ body {
 			border-width: 1px;
 			border-style: solid;
 
-			transform: rotateX(30deg) rotateY(-15deg) rotateZ(0deg);
+			transform: rotateX(30deg) rotateY(-10deg) rotateZ(0deg);
 
 			&::before {
 				position: absolute;
