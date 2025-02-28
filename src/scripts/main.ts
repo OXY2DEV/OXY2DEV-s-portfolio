@@ -73,13 +73,13 @@ function updateColorscheme () {
 
 setTheme();
 
-document.querySelector("body")?.addEventListener("click", () => {
-	if (siteTheme == "light") {
-		setTheme("dark");
-	} else {
-		setTheme("light");
-	}
-})
+//document.querySelector("body")?.addEventListener("click", () => {
+//	if (siteTheme == "light") {
+//		setTheme("dark");
+//	} else {
+//		setTheme("light");
+//	}
+//})
 
 /**
 	*
@@ -265,7 +265,6 @@ init.fromTo("#loader .atom .background .circle-right", {
 		if (siteTheme == "dark") {
 			return colorScheme.darkFg;
 		} else {
-			console.log("here")
 			return colorScheme.lightFg;
 		}
 	}
@@ -320,7 +319,7 @@ reveal.fromTo("#body .intro", {
 			return "conic-gradient(from -90deg, var(--light-bg) 0%, var(--light-fg) 100%)";
 		};
 	},
-	delay: 1,
+	delay: 0.5,
 
 	ease: "sine.in",
 	onComplete: () => {
@@ -376,20 +375,20 @@ reveal.fromTo("#body .intro .upper, #body .intro .lower", {
 	stagger: 0.25
 }, "-=0.25");
 
-reveal.fromTo("#body .intro .scroll", {
-	opacity: 0
-}, {
-	opacity: 1,
-	duration: 0.25,
-}, "-=0.25");
+//reveal.fromTo("#body .intro .scroll", {
+//	opacity: 0
+//}, {
+//	opacity: 1,
+//	duration: 0.25,
+//}, "-=0.25");
 
 
-scrollIconTL.fromTo("#body .intro .scroll path", {
-	y: -1
-}, {
-	y: 0,
-
-	duration: 0.25,
-	repeat: 1, yoyo: true
-});
+//scrollIconTL.fromTo("#body .intro .scroll path", {
+//	y: -1
+//}, {
+//	y: 0,
+//
+//	duration: 0.25,
+//	repeat: 1, yoyo: true
+//});
 

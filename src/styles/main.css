@@ -110,6 +110,18 @@ body[data-theme="dark"] {
 	}
 
 	#body {
+		background-color: var(--dark-bg);
+		color: var(--dark-fg);
+
+		transition-property: background-color, color;
+		transition-duration: var(--tr-dur);
+
+		.__grid {
+			div {
+				background-color: var(--dark-bg);
+			}
+		}
+
 		.block-reverse {
 			color: var(--light-fg);
 			background-color: var(--light-bg);
@@ -212,6 +224,29 @@ body[data-theme="dark"] {
 
 					transition-property: color;
 					transition-duration: var(--tr-dur);
+				}
+			}
+		}
+
+		.about-me {
+			color: var(--dark-bg);
+			background-color: var(--dark-fg);
+
+			transition-property: color, background-color;
+			transition-duration: var(--tr-dur);
+
+			.name-left, .name-right {
+				p {
+					font-weight: 500;
+
+					.outline {
+						color: var(--dark-fg);
+						-webkit-text-stroke: 1px var(--dark-bg);
+					}
+
+					.outline-special {
+						-webkit-text-stroke: 1px var(--dark-c5);
+					}
 				}
 			}
 		}
@@ -340,6 +375,12 @@ body[data-theme="light"] {
 	}
 
 	#body {
+		background-color: var(--light-bg);
+		color: var(--light-fg);
+
+		transition-property: background-color, color;
+		transition-duration: var(--tr-dur);
+
 		.block-reverse {
 			color: var(--dark-fg);
 			background-color: var(--dark-bg);
@@ -445,6 +486,14 @@ body[data-theme="light"] {
 				}
 			}
 		}
+
+		.about-me {
+			color: var(--dark-fg);
+			background-color: var(--dark-bg);
+
+			transition-property: color, background-color;
+			transition-duration: var(--tr-dur);
+		}
 	}
 
 	.color-0 {
@@ -507,8 +556,9 @@ body[data-theme="light"] {
 
 body {
 	width: 100dvw;
+	height: auto;
 
-	overflow-x: hidden;
+	overflow: hidden scroll;
 	font-family: "JetBrains Mono"
 }
 
@@ -720,6 +770,26 @@ body {
 }
 
 #body {
+	.__grid {
+		--cell-size: 10px;
+		--cell-gap: 2.5px;
+
+		display: grid;
+
+		grid-template-columns: 1fr 1fr;
+		grid-gap: var(--cell-gap);
+
+		div {
+			width: var(--cell-size);
+			height: var(--cell-size);
+		}
+
+		div.hidden {
+			opacity: 0;
+		}
+	}
+
+
 	.intro {
 		width: 100dvw;
 		height: 100dvh;
@@ -728,6 +798,20 @@ body {
 
 		background-position: center center;
 		background-size: calc(max(100dvw, 100dvh)) calc(max(100dvw, 100dvh));
+
+		.__grid {
+			--cell-size: 5px;
+			--cell-gap: calc(var(--cell-size) / 4);
+
+			position: absolute;
+
+			bottom: 10px;
+			right: calc(50dvw - (11.25px / 2));
+
+			div {
+				border-radius: calc(var(--cell-size) / 4);
+			}
+		}
 
 		.name {
 			position: absolute;
@@ -840,6 +924,59 @@ body {
 			path {
 				stroke: var(--bg);
 				stroke-opacity: 0.5;
+			}
+		}
+	}
+
+	.about-me {
+		position: relative;
+		display: block;
+
+		width: 100dvw;
+		height: 100dvh;
+
+		overflow: hidden;
+
+		justify-content: center;
+		align-content: center;
+
+		.name-left {
+			position: absolute;
+
+			top: 0;
+			left: -12.5dvw;
+
+			height: 100dvh;
+			overflow-y: hidden;
+
+			writing-mode: vertical-lr;
+			text-orientation: mixed;
+
+			font-size: 25dvw;
+			line-height: 1;
+
+			p {
+				white-space: nowrap;
+			}
+		}
+
+		.name-right {
+			position: absolute;
+
+			top: 0;
+			right: -12.5dvw;
+
+			writing-mode: vertical-rl;
+			text-orientation: mixed;
+
+			height: 100dvh;
+			overflow-y: hidden;
+
+			font-size: 25dvw;
+			line-height: 1;
+
+			p {
+				white-space: nowrap;
 			}
 		}
 	}
