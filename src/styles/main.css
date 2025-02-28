@@ -235,6 +235,13 @@ body[data-theme="dark"] {
 			transition-property: color, background-color;
 			transition-duration: var(--tr-dur);
 
+			.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
+				background-color: var(--dark-bg);
+
+				transition-property: background-color, color;
+				transition-duration: var(--tr-dur);
+			}
+
 			.name-left, .name-right {
 				p {
 					font-weight: 500;
@@ -249,6 +256,14 @@ body[data-theme="dark"] {
 					}
 				}
 			}
+		}
+
+		.interests {
+			color: var(--dark-fg);
+			background-color: var(--dark-bg);
+
+			transition-property: color, background-color;
+			transition-duration: var(--tr-dur);
 		}
 	}
 
@@ -490,6 +505,36 @@ body[data-theme="light"] {
 		.about-me {
 			color: var(--dark-fg);
 			background-color: var(--dark-bg);
+
+			transition-property: color, background-color;
+			transition-duration: var(--tr-dur);
+
+			.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
+				background-color: var(--light-bg);
+
+				transition-property: background-color, color;
+				transition-duration: var(--tr-dur);
+			}
+
+			.name-left, .name-right {
+				p {
+					font-weight: 500;
+
+					.outline {
+						color: var(--light-fg);
+						-webkit-text-stroke: 1px var(--light-bg);
+					}
+
+					.outline-special {
+						-webkit-text-stroke: 1px var(--light-c5);
+					}
+				}
+			}
+		}
+
+		.interests {
+			color: var(--light-fg);
+			background-color: var(--light-bg);
 
 			transition-property: color, background-color;
 			transition-duration: var(--tr-dur);
@@ -940,6 +985,19 @@ body {
 		justify-content: center;
 		align-content: center;
 
+		.color-0, .color-1, .color-2, .color-3, .color-4, .color-5 {
+			padding: 0 2px;
+		}
+
+		.desc {
+			padding: 0 15dvw;
+
+			text-align: center;
+			font-size: 0.5rem;
+
+			line-height: 1.5;
+		}
+
 		.name-left {
 			position: absolute;
 
@@ -972,6 +1030,25 @@ body {
 			p {
 				white-space: nowrap;
 			}
+		}
+	}
+
+	.interests {
+		position: relative;
+		display: block;
+
+		width: 100dvw;
+		height: 100dvh;
+
+		overflow: hidden;
+
+		justify-content: center;
+		align-content: center;
+
+		p {
+			display: block;
+
+			width: 10dvw;
 		}
 	}
 }
