@@ -946,9 +946,6 @@ body {
 			top: 0;
 			left: -12.5dvw;
 
-			height: 100dvh;
-			overflow-y: hidden;
-
 			writing-mode: vertical-lr;
 			text-orientation: mixed;
 
@@ -968,9 +965,6 @@ body {
 
 			writing-mode: vertical-rl;
 			text-orientation: mixed;
-
-			height: 100dvh;
-			overflow-y: hidden;
 
 			font-size: 25dvw;
 			line-height: 1;
