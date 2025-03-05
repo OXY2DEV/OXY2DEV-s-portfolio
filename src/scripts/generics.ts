@@ -72,3 +72,4 @@ export function updateColorscheme () {
 		darkS3: computedStyle.getPropertyValue("--dark-s3"),
 	};
 };
+

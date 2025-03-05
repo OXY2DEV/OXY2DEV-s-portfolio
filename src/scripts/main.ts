@@ -3,11 +3,11 @@ import "../styles/main.css";
 import { createIcons, Mouse } from "lucide";
 import eruda from "eruda";
 
-eruda.init();
-
 createIcons({
 	icons: { Mouse }
 });
+
+eruda.init();
 
 import { init } from "./timelines";
 import "./scroll";
