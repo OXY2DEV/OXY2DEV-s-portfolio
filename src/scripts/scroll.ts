@@ -65,3 +65,38 @@ gsap.fromTo("#body .about-me .name-right", {
 	},
 });
 
+// Interests section ////////////////////////////////////////////////////////
+
+let interestsTL = gsap.timeline({
+	scrollTrigger: {
+		trigger: "#body .interests",
+	}
+});
+
+interestsTL.fromTo("#body .interests .doc > p", {
+	opacity: 0
+}, {
+	opacity: 1,
+	stagger: 0.1,
+	duration: 0.25
+}, "<");
+
+interestsTL.fromTo("#body .interests .script .line", {
+	opacity: 0
+}, {
+	opacity: 1,
+	stagger: {
+		each: 0.05,
+		from: "end"
+	},
+	duration: 0.25
+}, "<");
+
+interestsTL.fromTo("#body .interests .doc .winbar span", {
+	opacity: 0
+}, {
+	opacity: 1,
+	stagger: 0.05
+})
+
+

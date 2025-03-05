@@ -270,6 +270,13 @@ body[data-theme="dark"] {
 					border: 1px solid var(--dark-s1);
 				}
 
+				.winbar p {
+					.root {
+						color: var(--dark-bg);
+						background-color: var(--dark-c5);
+					}
+				}
+
 				.color-0.pad::before {
 					color: transparent;
 					background-color: var(--dark-c2);
@@ -601,6 +608,76 @@ body[data-theme="light"] {
 
 			transition-property: color, background-color;
 			transition-duration: var(--tr-dur);
+
+			.doc {
+				hr {
+					border: 1px solid var(--light-s1);
+				}
+
+				.winbar p {
+					.root {
+						color: var(--light-bg);
+						background-color: var(--light-c5);
+					}
+				}
+
+				.color-0.pad::before {
+					color: transparent;
+					background-color: var(--light-c2);
+				}
+
+				.color-1.pad::before {
+					color: transparent;
+					background-color: var(--light-c1);
+				}
+
+				.color-2.pad::before {
+					color: transparent;
+					background-color: var(--light-c2);
+				}
+
+				.color-3.pad::before {
+					color: transparent;
+					background-color: var(--light-c3);
+				}
+
+				.color-4.pad::before {
+					color: transparent;
+					background-color: var(--light-c4);
+				}
+
+				.color-5.pad::before {
+					color: transparent;
+					background-color: var(--light-c5);
+				}
+			}
+
+			.script {
+				.line {
+					.statuscolumn {
+						background-color: var(--light-bg);
+						border-right: 1px solid var(--light-s2);
+
+						.lnum {
+							color: var(--light-s3);
+						}
+
+						.lnum-active {
+							color: var(--light-c5);
+							font-weight: bold;
+						}
+					}
+
+					.cursorline {
+						background-color: var(--light-s1)
+					}
+				}
+
+				.cursor {
+					background-color: var(--light-fg);
+					color: var(--light-bg);
+				}
+			}
 		}
 	}
 
@@ -1118,6 +1195,22 @@ body {
 		/*line-height: 1;*/
 
 		.doc {
+			position: relative;
+
+			&::before {
+				content: "";
+				position: absolute;
+				z-index: 5;
+
+				top: 0;
+				left: 0;
+
+				width: 100%;
+				height: 100%;
+
+				backdrop-filter: brightness(75%);
+			}
+
 			p {
 				margin: 0 5dvw 0 5dvw;
 			}
@@ -1136,7 +1229,7 @@ body {
 			}
 
 			.color-0.pad::before, .color-1.pad::before, .color-2.pad::before, .color-3.pad::before, .color-4.pad::before, .color-5.pad::before {
-				content: "abc";
+				content: "";
 				position: absolute;
 
 				top: 0;
@@ -1146,6 +1239,23 @@ body {
 				height: 100%;
 
 				opacity: 0.25;
+			}
+
+			.winbar {
+				position: absolute;
+
+				bottom: 0;
+				left: 0;
+
+				z-index: 10;
+
+				p {
+					margin: 0;
+
+					.root {
+						padding: 0 1ch;
+					}
+				}
 			}
 		}
 
@@ -1169,6 +1279,10 @@ body {
 
 					white-space: pre;
 					padding-right: 5px;
+
+					.lnum {
+						opacity: 0.5;
+					}
 				}
 
 				.content {
