@@ -211,17 +211,17 @@ reveal.to("#loader", {
 reveal.fromTo("#body .intro", {
 	backgroundImage: () => {
 		if (generics.siteTheme == "dark") {
-			return "conic-gradient(from -90deg, var(--dark-bg) 100%, var(--dark-fg) 100%)";
+			return "conic-gradient(from 270deg, var(--dark-s1) 0%, var(--dark-bg) 0%)";
 		} else {
-			return "conic-gradient(from -90deg, var(--light-bg) 100%, var(--light-fg) 100%)";
+			return "conic-gradient(from 270deg, var(--light-s1) 0%, var(--light-bg) 0%)";
 		};
 	},
 }, {
 	backgroundImage: () => {
 		if (generics.siteTheme == "dark") {
-			return "conic-gradient(from -90deg, var(--dark-bg) 0%, var(--dark-fg) 100%)";
+			return "conic-gradient(from 270deg, var(--dark-s1) 0%, var(--dark-bg) 50%)";
 		} else {
-			return "conic-gradient(from -90deg, var(--light-bg) 0%, var(--light-fg) 100%)";
+			return "conic-gradient(from 270deg, var(--light-s1) 0%, var(--light-bg) 50%)";
 		};
 	},
 	delay: 0.5,
@@ -278,4 +278,16 @@ reveal.fromTo("#body .intro .upper, #body .intro .lower", {
 	duration: 0.5,
 	stagger: 0.25
 }, "-=0.25");
+
+
+gsap.fromTo("#page .intro .arrow", {
+	backgroundImage: "-webkit-linear-gradient(var(--dark-bg) 0%, var(--dark-c5) 100%)",
+}, {
+	backgroundImage: "-webkit-linear-gradient(var(--dark-bg) 25%, var(--dark-c5) 100%)",
+	duration: 0.5,
+	repeatDelay: 0.25,
+
+	repeat: -1,
+	yoyo: true
+})
 

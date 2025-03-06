@@ -116,66 +116,8 @@ body[data-theme="dark"] {
 		transition-property: background-color, color;
 		transition-duration: var(--tr-dur);
 
-		.__grid {
-			div {
-				background-color: var(--dark-bg);
-			}
-		}
-
-		.block-reverse {
-			color: var(--light-fg);
-			background-color: var(--light-bg);
-
-			border-color: var(--light-s1);
-
-			transition-property: color, background-color, border-color;
-			transition-duration: var(--tr-dur);
-
-			.color-0 {
-				color: var(--light-s2);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-1 {
-				color: var(--light-c1);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-2 {
-				color: var(--light-c2);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-3 {
-				color: var(--light-c3);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-4 {
-				color: var(--light-c4);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-5 {
-				color: var(--light-c5);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-		}
-
 		.intro {
-			background-image: conic-gradient(from -90deg, var(--dark-bg), var(--dark-fg));
+			background-image: conic-gradient(from 270deg, var(--dark-s1), var(--dark-bg) 50%);
 
 			transition-property: background-image;
 			transition-duration: var(--tr-dur);
@@ -188,13 +130,13 @@ body[data-theme="dark"] {
 			}
 
 			.desc {
-				color: var(--dark-bg);
+				color: var(--dark-fg);
 
 				transition-property: color;
 				transition-duration: var(--tr-dur);
 
 				.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
-					background-color: var(--dark-bg);
+					background-color: var(--dark-s1);
 
 					transition-property: background-color, color;
 					transition-duration: var(--tr-dur);
@@ -202,6 +144,9 @@ body[data-theme="dark"] {
 			}
 
 			.upper {
+				border-color: var(--dark-bg);
+				background-color: var(--dark-bg);
+
 				&::before {
 					color: var(--dark-c2);
 
@@ -211,20 +156,25 @@ body[data-theme="dark"] {
 			}
 
 			.lower {
-				color: var(--dark-fg);
-				background-color: var(--dark-bg);
-
-				border-color: var(--dark-s1);
-
 				transition-property: color, background-color, border-color;
 				transition-duration: var(--tr-dur);
 
 				&::before {
 					color: var(--dark-c5);
+					background-color: var(--dark-bg);
+
+					filter: contrast(125%);
 
 					transition-property: color;
 					transition-duration: var(--tr-dur);
 				}
+			}
+
+			.arrow {
+				background-color: var(--dark-c5);
+				background-image: -webkit-linear-gradient(var(--dark-bg), var(--dark-c5));
+
+				-webkit-text-fill-color: transparent;
 			}
 		}
 
@@ -1157,26 +1107,6 @@ body {
 }
 
 #body {
-	.__grid {
-		--cell-size: 10px;
-		--cell-gap: 2.5px;
-
-		display: grid;
-
-		grid-template-columns: 1fr 1fr;
-		grid-gap: var(--cell-gap);
-
-		div {
-			width: var(--cell-size);
-			height: var(--cell-size);
-		}
-
-		div.hidden {
-			opacity: 0;
-		}
-	}
-
-
 	.intro {
 		width: 100dvw;
 		height: 100dvh;
@@ -1185,20 +1115,6 @@ body {
 
 		background-position: center center;
 		background-size: calc(max(100dvw, 100dvh)) calc(max(100dvw, 100dvh));
-
-		.__grid {
-			--cell-size: 5px;
-			--cell-gap: calc(var(--cell-size) / 4);
-
-			position: absolute;
-
-			bottom: 10px;
-			right: calc(50dvw - (11.25px / 2));
-
-			div {
-				border-radius: calc(var(--cell-size) / 4);
-			}
-		}
 
 		.name {
 			position: absolute;
@@ -1209,7 +1125,6 @@ body {
 			font-size: 32px;
 			line-height: 1;
 
-			height: calc(32px * 1.25);
 			overflow: hidden;
 
 			span {
@@ -1238,7 +1153,7 @@ body {
 		.window {
 			position: absolute;
 
-			width: 50dvw;
+			width: auto;
 			height: auto;
 
 			padding: 5px;
@@ -1255,8 +1170,9 @@ body {
 			top: 20dvh;
 			left: 20dvw;
 
-			border-width: 1px;
-			border-style: solid;
+			padding-right: calc(5px + 10ch);
+
+			overflow: hidden;
 
 			transform: rotateX(-15deg) rotateY(-10deg) rotateZ(0deg);
 
@@ -1277,8 +1193,9 @@ body {
 			bottom: 20dvh;
 			right: 20dvw;
 
-			border-width: 1px;
-			border-style: solid;
+			padding-right: calc(5px + 3ch);
+
+			overflow: hidden;
 
 			transform: rotateX(30deg) rotateY(-10deg) rotateZ(0deg);
 
@@ -1288,30 +1205,27 @@ body {
 				top: 0;
 				right: 0;
 
+				width: 100%;
+				height: 100%;
+
 				padding: 5px;
+
+				z-index: -1;
 
 				content: " Lua";
 				text-align: right;
 			}
 		}
 
-		.scroll {
+		.arrow {
 			position: absolute;
 
 			bottom: 10px;
-			right: 10px;
+			right: calc(50dvw - 0.5ch);
 
-			width: 30px;
-			height: 30px;
-
-			rect {
-				stroke: var(--layer-0)
-			}
-
-			path {
-				stroke: var(--bg);
-				stroke-opacity: 0.5;
-			}
+			font-size: 2rem;
+			-webkit-background-clip: text;
+			background-clip: text;
 		}
 	}
 
