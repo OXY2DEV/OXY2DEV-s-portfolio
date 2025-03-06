@@ -1389,7 +1389,7 @@ body {
 
 		overflow: hidden;
 
-		font-size: 1.5dvh;
+		font-size: 0.5rem;
 
 		.doc {
 			position: relative;
@@ -1464,7 +1464,7 @@ body {
 				display: grid;
 
 				width: 100dvw;
-				min-height: 1.5dvh;
+				min-height: 0.5rem;
 
 				overflow: hidden;
 
