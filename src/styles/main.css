@@ -314,9 +314,11 @@ body[data-theme="dark"] {
 					color: var(--dark-bg);
 				}
 
-				.statusline {
+				.statusline-bg {
 					background-color: var(--dark-bg);
+				}
 
+				.statusline {
 					.mode {
 						background-color: var(--dark-c5);
 						color: var(--dark-bg);
@@ -749,60 +751,8 @@ body[data-theme="light"] {
 		transition-property: background-color, color;
 		transition-duration: var(--tr-dur);
 
-		.block-reverse {
-			color: var(--dark-fg);
-			background-color: var(--dark-bg);
-
-			border-color: var(--dark-s1);
-
-			transition-property: color, background-color, border-color;
-			transition-duration: var(--tr-dur);
-
-			.color-0 {
-				color: var(--dark-s2);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-1 {
-				color: var(--dark-c1);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-2 {
-				color: var(--dark-c2);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-3 {
-				color: var(--dark-c3);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-4 {
-				color: var(--dark-c4);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-
-			.color-5 {
-				color: var(--dark-c5);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-			}
-		}
-
 		.intro {
-			background-image: conic-gradient(from -90deg, var(--light-bg), var(--light-fg));
+			background-image: conic-gradient(from 270deg, var(--light-s1), var(--light-bg) 50%);
 
 			transition-property: background-image;
 			transition-duration: var(--tr-dur);
@@ -815,13 +765,13 @@ body[data-theme="light"] {
 			}
 
 			.desc {
-				color: var(--light-bg);
+				color: var(--light-fg);
 
 				transition-property: color;
 				transition-duration: var(--tr-dur);
 
 				.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
-					background-color: var(--light-bg);
+					background-color: var(--light-s1);
 
 					transition-property: background-color, color;
 					transition-duration: var(--tr-dur);
@@ -829,8 +779,11 @@ body[data-theme="light"] {
 			}
 
 			.upper {
+				border-color: var(--light-bg);
+				background-color: var(--light-bg);
+
 				&::before {
-					color: var(--dark-c2);
+					color: var(--light-c2);
 
 					transition-property: color;
 					transition-duration: var(--tr-dur);
@@ -838,35 +791,41 @@ body[data-theme="light"] {
 			}
 
 			.lower {
-				color: var(--light-fg);
-				background-color: var(--light-bg);
-
-				border-color: var(--light-s1);
-
 				transition-property: color, background-color, border-color;
 				transition-duration: var(--tr-dur);
 
 				&::before {
-					color: var(--light-c4);
+					color: var(--light-c5);
+					background-color: var(--light-bg);
+
+					filter: contrast(125%);
 
 					transition-property: color;
 					transition-duration: var(--tr-dur);
 				}
 			}
+
+			.arrow {
+				background-color: var(--light-c5);
+				background-image: -webkit-linear-gradient(var(--light-bg), var(--light-c5));
+
+				-webkit-text-fill-color: transparent;
+			}
 		}
 
 		.about-me {
-			color: var(--dark-fg);
-			background-color: var(--dark-bg);
+			color: var(--light-fg);
 
 			transition-property: color, background-color;
 			transition-duration: var(--tr-dur);
 
 			.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
-				background-color: var(--light-bg);
-
 				transition-property: background-color, color;
 				transition-duration: var(--tr-dur);
+			}
+
+			.overlay {
+				background-image: linear-gradient(var(--light-bg), transparent, var(--light-bg));
 			}
 
 			.name-left, .name-right {
@@ -874,8 +833,8 @@ body[data-theme="light"] {
 					font-weight: 500;
 
 					.outline {
-						color: var(--light-fg);
-						-webkit-text-stroke: 1px var(--light-bg);
+						color: var(--light-bg);
+						-webkit-text-stroke: 1px var(--light-fg);
 					}
 
 					.outline-special {
@@ -892,6 +851,22 @@ body[data-theme="light"] {
 			transition-property: color, background-color;
 			transition-duration: var(--tr-dur);
 
+			hr {
+				background-color: var(--light-s1);
+			}
+
+			.winbar {
+				background-color: var(--light-bg);
+				border-color: var(--light-s1);
+
+				p {
+					.root {
+						color: var(--light-bg);
+						background-color: var(--light-c5);
+					}
+				}
+			}
+
 			.doc {
 				color: var(--light-fg);
 				background-color: var(--light-bg);
@@ -899,20 +874,27 @@ body[data-theme="light"] {
 				transition-property: color, background-color;
 				transition-duration: var(--tr-dur);
 
-				.winbar {
-					border-color: var(--light-s1);
+				.mention {
+					filter: contrast(150%);
+					color: var(--light-c4);
+					background-color: var(--light-s1);
+				}
 
-					p {
-						.root {
-							color: var(--light-bg);
-							background-color: var(--light-c5);
-						}
-					}
+				.ref {
+					filter: contrast(150%);
+					color: var(--light-c5);
+					background-color: var(--light-s1);
+				}
+
+				code {
+					filter: contrast(150%);
+					color: var(--light-c5);
+					background-color: var(--light-s1);
 				}
 
 				.color-0.pad::before {
 					color: transparent;
-					background-color: var(--light-c2);
+					background-color: var(--light-s2);
 				}
 
 				.color-1.pad::before {
@@ -967,18 +949,308 @@ body[data-theme="light"] {
 					color: var(--light-bg);
 				}
 
-				.statusline {
-					background-color: var(--dark-bg);
-					border-color: var(--dark-s2);
+				.statusline-bg {
+					background-color: var(--light-bg);
+				}
 
+				.statusline {
 					.mode {
-						background-color: var(--dark-c5);
-						color: var(--dark-bg);
+						background-color: var(--light-c5);
+						color: var(--light-bg);
 					}
 
 					.file {
-						background-color: var(--dark-s2);
-						color: var(--dark-bg);
+						background-color: var(--light-s2);
+						color: var(--light-bg);
+					}
+				}
+			}
+		}
+
+		.projects {
+			.ui {
+				border-color: var(--light-s1);
+
+				transition-duration: 0.5s;
+
+				&::before {
+					color: var(--light-s2);
+					background-color: var(--light-bg);
+
+					transition-duration: 0.5s;
+				}
+			}
+
+			.ui#preview {
+				.display {
+					opacity: 0;
+				}
+
+				.display.current {
+					opacity: 1;
+				}
+
+				.display#mkv {
+					hr {
+						background-color: var(--light-s1);
+					}
+
+					.raw {
+						h1 {
+							color: var(--light-c1);
+						}
+
+						h2 {
+							color: var(--light-c2);
+						}
+
+						h3 {
+							color: var(--light-c3);
+						}
+
+						code {
+							filter: contrast(150%);
+							color: var(--light-c5);
+						}
+					}
+
+					.preview {
+						h1 {
+							color: var(--light-c1);
+
+							&::before {
+								background-color: var(--light-c1);
+							}
+						}
+
+						h2 {
+							color: var(--light-c2);
+
+							&::before {
+								background-color: var(--light-c2);
+							}
+						}
+
+						h3 {
+							color: var(--light-c3);
+
+							&::before {
+								background-color: var(--light-c3);
+							}
+						}
+
+						code {
+							filter: contrast(150%);
+							color: var(--light-c5);
+							background-color: var(--light-s1);
+						}
+					}
+				}
+
+				.display#hpv {
+					hr {
+						background-color: var(--light-s1);
+					}
+
+					.raw {
+						h1 {
+							color: var(--light-c5);
+						}
+
+						.mention {
+							color: var(--light-c4);
+						}
+
+						.ref {
+							filter: contrast(150%);
+							color: var(--light-c5);
+						}
+
+						code {
+							filter: contrast(150%);
+							color: var(--light-c5);
+						}
+					}
+
+					.preview {
+						h1 {
+							color: transparent;
+							background-color: var(--light-c1);
+
+							opacity: 0.25;
+						}
+
+						.mention {
+							filter: contrast(150%);
+							color: var(--light-c4);
+							background-color: var(--light-s1);
+						}
+
+						.ref {
+							filter: contrast(150%);
+							color: var(--light-c5);
+							background-color: var(--light-s1);
+						}
+
+						code {
+							filter: contrast(150%);
+							color: var(--light-c5);
+							background-color: var(--light-s1);
+						}
+
+						.color-0.pad::before {
+							color: transparent;
+							background-color: var(--light-s2);
+						}
+
+						.color-1.pad::before {
+							color: transparent;
+							background-color: var(--light-c1);
+						}
+
+						.color-2.pad::before {
+							color: transparent;
+							background-color: var(--light-c2);
+						}
+
+						.color-3.pad::before {
+							color: transparent;
+							background-color: var(--light-c3);
+						}
+
+						.color-4.pad::before {
+							color: transparent;
+							background-color: var(--light-c4);
+						}
+
+						.color-5.pad::before {
+							color: transparent;
+							background-color: var(--light-c5);
+						}
+					}
+				}
+
+				.display#pat {
+					.cursor {
+						background-color: var(--light-fg);
+						color: var(--light-bg);
+					}
+
+					.hover_1, .hover_2 {
+						border-color: var(--light-s1);
+
+						.color-0::before {
+							color: transparent;
+							background-color: var(--light-s2);
+						}
+
+						.color-1::before {
+							color: transparent;
+							background-color: var(--light-c1);
+						}
+
+						.color-2::before {
+							color: transparent;
+							background-color: var(--light-c2);
+						}
+
+						.color-3::before {
+							color: transparent;
+							background-color: var(--light-c3);
+						}
+
+						.color-4::before {
+							color: transparent;
+							background-color: var(--light-c4);
+						}
+
+						.color-5::before {
+							color: transparent;
+							background-color: var(--light-c5);
+						}
+					}
+				}
+
+				.display#vhs {
+					hr {
+						background-color: var(--light-s1);
+					}
+				}
+
+				.display#ste {
+					p {
+						background-color: var(--light-bg);
+						color: var(--light-fg);
+					}
+
+					.atom {
+						.atom-container {
+							.background {
+								stroke: var(--light-fg);
+
+								transition-property: stroke;
+								transition-duration: var(--tr-dur);
+							}
+
+							.circle-left, .circle-right {
+								stroke: var(--light-fg);
+							}
+
+							.circle-right.changed {
+								stroke: var(--light-c5);
+							}
+
+							.hider {
+								background-color: var(--light-bg);
+
+								transition-property: background-color;
+								transition-duration: var(--tr-dur);
+							}
+
+							.core {
+								background-image: radial-gradient(at 25% 25%, var(--light-c5) 0%, transparent 90%);
+
+								transition-property: background-image;
+								transition-duration: var(--tr-dur);
+							}
+
+							.orbit {
+								border-color: var(--light-s2);
+
+								transition-property: background-image;
+								transition-duration: var(--tr-dur);
+
+								.electron {
+									&::before {
+										background-color: var(--light-s3);
+
+										transition-property: background-color;
+										transition-duration: var(--tr-dur);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.ui:hover {
+				border-color: var(--light-c4);
+
+				&::before {
+					color: var(--light-c4);
+					background-color: var(--light-bg);
+				}
+
+				.link {
+					border-color: var(--light-c4);
+				}
+			}
+
+			.ui#list {
+				.item:hover {
+					&::before {
+						background-color: var(--light-s1);
 					}
 				}
 			}
@@ -1481,7 +1753,7 @@ body {
 			position: relative;
 			overflow: scroll;
 
-			filter: brightness(75%);
+			filter: brightness(90%);
 
 			p {
 				margin: 0 5vw 0 5vw;
@@ -1590,6 +1862,22 @@ body {
 				}
 			}
 
+			.statusline-bg {
+				position: absolute;
+
+				bottom: 0;
+				left: 0;
+
+				width: 100vw;
+
+				z-index: 9;
+
+				color: transparent;
+				filter: brightness(125%);
+
+				background: red;
+			}
+
 			.statusline {
 				position: absolute;
 
@@ -1601,7 +1889,6 @@ body {
 				z-index: 10;
 
 				text-align: center;
-				filter: contrast(125%);
 
 				.mode, .file {
 					padding: 0 1ch;
