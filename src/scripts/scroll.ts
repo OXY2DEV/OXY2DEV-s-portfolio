@@ -70,9 +70,12 @@ gsap.fromTo("#body .about-me .name-right", {
 let interestsTL = gsap.timeline({
 	scrollTrigger: {
 		trigger: "#body .interests",
-		//snap: {
-		//	snapTo: 0.5,
-		//},
+		snap: {
+			snapTo: 0.5,
+			duration: 0.75,
+
+			delay: 0.5
+		},
 	}
 });
 

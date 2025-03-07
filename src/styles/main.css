@@ -969,6 +969,7 @@ body[data-theme="light"] {
 
 				.statusline {
 					background-color: var(--dark-bg);
+					border-color: var(--dark-s2);
 
 					.mode {
 						background-color: var(--dark-c5);
@@ -1600,6 +1601,7 @@ body {
 				z-index: 10;
 
 				text-align: center;
+				filter: contrast(125%);
 
 				.mode, .file {
 					padding: 0 1ch;
