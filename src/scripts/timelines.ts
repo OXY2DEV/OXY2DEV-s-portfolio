@@ -6,7 +6,7 @@ import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 
 // Lucide icons used for animations.
-import { createElement, IconNode, Activity, Sparkles, ScrollText, Spline, Mouse, Aperture, CircleCheckBig, Scale } from "lucide";
+import { createElement, IconNode, Activity, Sparkles, ScrollText, Spline, Mouse, Aperture, CircleCheckBig } from "lucide";
 
 gsap.registerPlugin(TextPlugin);
 generics.setTheme();
@@ -465,6 +465,19 @@ steTL.fromTo("#body .projects .ui#desc p", {
 
 
 
+let ghTL = gsap.timeline({
+	paused: true,
+
+	onComplete: () => {
+		document.querySelector("#body .projects .ui#desc .link")?.setAttribute("href", "https://github.com/OXY2DEV");
+	}
+});
+
+ghTL.fromTo("#body .projects .ui#desc p", {
+	text: ""
+}, {
+	text: "Want to see more projects? Check out the github profile."
+});
 
 
 let entries = document.querySelectorAll("#body .projects .ui#list .item");
@@ -474,6 +487,7 @@ const descriptions: { [index: number]: GSAPTimeline | null } = {
 	2: patTL,
 	3: vhsTL,
 	4: steTL,
+	5: ghTL,
 };
 const affects: String[] = [
 	"#body .projects .ui#preview .display#mkv",

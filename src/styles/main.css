@@ -612,7 +612,9 @@ body[data-theme="dark"] {
 
 			.ui#list {
 				.item:hover {
-					background-color: var(--dark-s1);
+					&::before {
+						background-color: var(--dark-s1);
+					}
 				}
 			}
 		}
@@ -2096,15 +2098,38 @@ body {
 			}
 
 			.item {
+				position: relative;
 				display: grid;
 				padding: 0 5px;
 
 				grid-template-columns: 2ch 3fr 7fr;
 				grid-column-gap: 1ch;
+
+				margin-bottom: 2px;
+
+				&::before {
+					position: absolute;
+					content: "";
+
+					top: 0;
+					left: 0;
+
+					z-index: 1;
+
+					width: 100%;
+					height: 100%;
+
+					opacity: 0.5;
+				}
+
+				* {
+					z-index: 5;
+				}
 			}
 		}
 	}
 }
+
 
 /* For desktop */
 @media (min-width: 100ch) {
