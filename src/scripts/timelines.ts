@@ -95,6 +95,13 @@ function createLoaderMsg() {
 
 /* |fE */
 
+
+// Prevent user from scrolling
+init.set("#body", {
+	height: "100dvh",
+	overflow: "hidden"
+});
+
 init.fromTo("#loader .atom .core", {
 	scale: 0.5,
 	opacity: 0
@@ -188,6 +195,11 @@ init.fromTo("#loader .atom .background .circle-right", {
 	}
 }, "-=0.25");
 
+init.set("#body", {
+	height: "auto",
+	overflow: "scroll"
+});
+
 /**
 	*
 	* Page reveal!
@@ -256,17 +268,24 @@ reveal.fromTo("#body .intro .desc p", {
 	duration: 0.5
 }, "Info");
 
-if (generics.siteTheme == "dark") {
-	reveal.to("#body .intro .name p .two", {
-		color: "var(--dark-c5)",
-		duration: 0.5
-	});
-} else {
-	reveal.to("#body .intro .name p .two", {
-		color: "var(--light-c5)",
-		duration: 0.5
-	});
-}
+reveal.fromTo("#body .intro .name p .two", {
+	color: () => {
+		if (generics.siteTheme == "dark") {
+			return generics.colorScheme.darkFg;
+		} else {
+			return generics.colorScheme.lightFg;
+		}
+	},
+}, {
+	color: () => {
+		if (generics.siteTheme == "dark") {
+			return generics.colorScheme.darkC5;
+		} else {
+			return generics.colorScheme.lightC5;
+		}
+	},
+	duration: 0.5
+});
 
 reveal.fromTo("#body .intro .upper, #body .intro .lower", {
 	y: 16,
