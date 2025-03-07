@@ -6,7 +6,7 @@ import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 
 // Lucide icons used for animations.
-import { createElement, IconNode, Activity, Sparkles, ScrollText, Spline, Mouse, Aperture, CircleCheckBig } from "lucide";
+import { createElement, IconNode, Activity, Sparkles, ScrollText, Spline, Mouse, Aperture, CircleCheckBig, Scale } from "lucide";
 
 gsap.registerPlugin(TextPlugin);
 generics.setTheme();
@@ -289,5 +289,101 @@ gsap.fromTo("#page .intro .arrow", {
 
 	repeat: -1,
 	yoyo: true
-})
+});
+
+// Project animations ////////////////////////////////////////////////
+
+let projectAtomTL = gsap.timeline({
+	paused: true,
+
+	repeat: -1,
+	repeatDelay: 1
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom ", {
+	opacity: 0,
+	scale: 0.75
+}, {
+	opacity: 1,
+	scale: 1
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .atom-container .orbit-1, #body .projects .ui#preview .display#ste .atom .atom-container .orbit-2", {
+	rotate: 0
+}, {
+	rotate: 180,
+	duration: 1,
+
+	stagger: 0.125
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .atom-container .core, #body .projects .ui#preview .display#ste .atom .atom-container .orbit-1, #body .projects .ui#preview .display#ste .atom .atom-container .orbit-2", {
+	opacity: 1,
+	scale: 1
+}, {
+	opacity: 0,
+	scale: 0.75
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .atom-container .background", {
+	scale: 1.5,
+	opacity: 0,
+}, {
+	scale: 1,
+	opacity: 1,
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .atom-container .hider", {
+	x: 200, y: -200
+}, {
+	x: 0, y: 0,
+	ease: "power4.out"
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .background", {
+	x: 0, y: 0,
+}, {
+	x: -5, y: 5,
+
+	repeat: 1,
+	yoyo: true,
+
+	duration: 0.20,
+	ease: "power4.out"
+}, "-=0.25");
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .background .circle-right", {
+	stroke: () => {
+		if (generics.siteTheme == "dark") {
+			return generics.colorScheme.darkFg;
+		} else {
+			return generics.colorScheme.lightFg;
+		}
+	}
+}, {
+	stroke: () => {
+		if (generics.siteTheme == "dark") {
+			return generics.colorScheme.darkC5;
+		} else {
+			return generics.colorScheme.lightC5;
+		}
+	},
+	ease: "power4.out"
+}, "-=0.25");
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom ", {
+	opacity: 1,
+}, {
+	opacity: 0,
+	duration: 0.25,
+	delay: 2.5
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste p ", {
+	width: 0
+}, {
+	width: "7ch",
+	duration: 0.25,
+}, "-=0.125");
+
 

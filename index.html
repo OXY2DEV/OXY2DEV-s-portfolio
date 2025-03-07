@@ -153,50 +153,70 @@
 				<div class="doc">
 					<br>
 
-					<p><span class="color-5 pad">scripts.lsp_hover</span></p>
-					<p class="right">Custom <span class="color-1">LSP hover</span> function</p>
+					<p><span class="ref">OXY2DEV.interests</span></p>
+					<p class="right">OXY2DEV's interests</p>
 
 					<br>
 					<br>
 
 					<p class="title color-1 pad">Example text</p>
-					<p class="color-1">🧩 Functions</p>
+					<p class="color-1">🔫 Topics</p>
+
+					<p class="right" style="align: right;"><span class="ref">interests.topics</span></p>
 					<br>
 
-					<p class="right"><span class="color-2 pad">hover.hover()</span></p>
-					<p>hover()</p>
+					<p>I am generally interested with things related to <i>tech</i>. But among topics related to tech I am more interested with things such as <code>Linux</code>, <code>Open-source projects</code>, <code>Neovim</code>(and text editors in general).</p>
 					<br>
 
-					<p>Opens the hover window. If invoked while the hover window is active switches to the hover window.</p>
+					<p>In terms of development, I am interested in <code>Web development</code>(front-end) & <code>Game development</code>.</p>
 					<br>
 
-					<p class="right"><span class="color-2 pad">hover.setup()</span></p>
-					<p>setup(<span class="color-1 pad">config</span>)</p>
+					<p class="title color-1 pad">Example text</p>
+					<p class="color-1">🔫 Languages</p>
+
+					<p class="right" style="align: right;"><span class="ref">interests.languages</span></p>
 					<br>
 
-					<p>Setup function for the hover window. Optionally takes the configuration table as an argument.</p>
-
-					<hr>
+					<p>Though I have played around with quite a few languages in the past. Nowadays, I mostly work with <code>Lua</code>. I also have some experience in <code>C</code>.</p>
 					<br>
 
-					<div class="winbar">
-						<p>
-							 <span class="root">󱎓</span>
-							 <span class="color-0">→</span>
-							 <span class="color-5">󱏒 field</span>
-							 <span class="color-0">→</span>
-							 <span class="color-4">󰛓 string</span>
-							 <span class="color-0">→</span>
-							 <span class="color-4">󰛓 string_content</span>
-						</p>
-					</div>
+					<p>For web development, I have worked with <code>Sass</code>, <code>Typescript</code> along with the typical languages(<code>HTML</code>, <code>CSS</code> & <code>Javascript</code>).</p>
+					<br>
+
+					<p>I am also learning <code>GDScript</code> at the moment.</p>
+					<br>
+
+					<p class="title color-1 pad">Example text</p>
+					<p class="color-1">🔫 Other stuff</p>
+
+					<p class="right" style="align: right;"><span class="ref">interests.others</span></p>
+					<br>
+
+					<p>Outside of programming I also like <code>gaming</code>.</p>
+					<br>
+					<p> I like factory/base-building games such as <code>Factorio</code>, <code>Satisfactory</code>, <code>Astroneer</code> etc.</p>
+
+					<br>
+					<br>
+				</div>
+
+				<div class="winbar">
+					<p>
+						 <span class="root">󱎓</span>
+						 <span class="color-0">→</span>
+						 <span class="color-5">󱏒 field</span>
+						 <span class="color-0">→</span>
+						 <span class="color-4">󰛓 string</span>
+						 <span class="color-0">→</span>
+						 <span class="color-4">󰛓 string_content</span>
+					</p>
 				</div>
 
 				<div class="script">
 					<div class="line">
 						<div class="statuscolumn">  <span class="lnum">1</span></div>
 						<div class="content">
-							<p class="color-0">--[</p>
+							<p class="color-0">--[[</p>
 						</div>
 					</div>
 
@@ -228,7 +248,7 @@
 					<div class="line">
 						<div class="statuscolumn">  <span class="lnum">5</span></div>
 						<div class="content">
-							<p class="color-0">--]</p>
+							<p class="color-0">--]]</p>
 						</div>
 					</div>
 
@@ -514,6 +534,9 @@
 							<br>
 							<p>And <span class="color-1">**so much>**</span> more.</p>
 						</div>
+
+						<hr>
+
 						<div class="preview">
 							<h1>󰼏 markview.nvim</h1>
 							<br>
@@ -554,7 +577,8 @@
 							<p>And <span class="color-1"><b>so much</b></span> more.</p>
 						</div>
 					</div>
-					<div class="display current" id="hpv">
+
+					<div class="display" id="hpv">
 						<hr>
 
 						<div class="raw">
@@ -704,14 +728,140 @@
 							<p class="color-0">......</p>
 						</div>
 					</div>
+
+					<div class="display" id="pat">
+						<p>
+							<span class="color-5">local</span> example = <span class="color-4">"Hello world"</span><span class="color-0">;</span>
+						</p>
+						<p>
+							<span class="color-5">local</span> match = <span class="color-3">string</span><span class="color-0">.</span><span class="color-5">match</span><span class="color-0">(</span>example, <span class="color-2">"^H<span class="cursor">e</span>llo"</span><span class="color-0">);</span>
+						</p>
+
+						<br><br><br><br><br><br><br>
+
+						<p>
+							<span class="color-5">local</span> match_2 = <span class="color-3">string</span><span class="color-0">.</span><span class="color-5">find</span><span class="color-0">(</span>example, <span class="color-2">"[%sa-z<span class="cursor">]</span>"</span><span class="color-0">);</span>
+						</p>
+
+						<div class="hover_1">
+							<p class="color-0">󰐱 Pattern</p>
+							<p class="color-3" style="--indent: 1;">󰀱 From start</p>
+							<p class="color-2" style="--indent: 1;">󰈚 Literal character: "H"</p>
+							<p class="color-2" style="--indent: 1;">󰈚 Literal character: "e"</p>
+							<p class="color-2" style="--indent: 1;">󰈚 Literal character: "l"</p>
+							<p class="color-2" style="--indent: 1;">󰈚 Literal character: "l"</p>
+							<p class="color-2" style="--indent: 1;">󰈚 Literal character: "o"</p>
+						</div>
+
+						<div class="hover_2">
+							<p class="color-0">󰐱 Pattern</p>
+							<p class="color-3" style="--indent: 1;">󱉓 Character set</p>
+							<p class="color-5" style="--indent: 2;">󰆦 Character set content,</p>
+							<p class="color-4" style="--indent: 3;">󰏗 Character class: "%s"</p>
+							<p class="color-2" style="--indent: 3;">󰊱 Character range: a-z</p>
+						</div>
+					</div>
+
+					<div class="display" id="vhs">
+						<div class="raw">
+							<p># Where should we write the GIF?</p>
+							<p>Output demo.gif</p>
+							<br>
+							<p># Set up a 1200x600 terminal with 46px font.</p>
+							<p>Set FontSize 46</p>
+							<p>Set Width 1200</p>
+							<p>Set Height 600</p>
+							<br>
+							<p># Type a command in the terminal.</p>
+							<p>Type "echo 'Welcome to VHS!'"</p>
+							<br>
+							<p># Pause for dramatic effect...</p>
+							<p>Sleep 500ms</p>
+							<br>
+							<p># Run the command by pressing enter.</p>
+							<p>Enter</p>
+							<br>
+							<p># Admire the output for a bit.</p>
+							<p>Sleep 5s</p>
+						</div>
+
+						<hr>
+
+						<div class="preview">
+							<p class="color-0"># Where should we write the GIF?</p>
+							<p><span class="color-5">Output</span> demo.gif</p>
+							<br>
+							<p class="color-0"># Set up a 1200x600 terminal with 46px font.</p>
+							<p><span class="color-5">Set</span> FontSize <span class="color-2">46</span></p>
+							<p><span class="color-5">Set</span> Width <span class="color-2">1200</span></p>
+							<p><span class="color-5">Set</span> Height <span class="color-2">600</span></p>
+							<br>
+							<p class="color-0"># Type a command in the terminal.</p>
+							<p><span class="color-5">Type</span> <span class="color-4">"echo 'Welcome to VHS!'"</span></p>
+							<br>
+							<p class="color-0"># Pause for dramatic effect...</p>
+							<p><span class="color-5">Sleep</span> <span class="color-2">500ms</span></p>
+							<br>
+							<p class="color-0"># Run the command by pressing enter.</p>
+							<p class="color-5">Enter</p>
+							<br>
+							<p class="color-0"># Admire the output for a bit.</p>
+							<p><span class="color-5">Sleep</span> <span class="color-2">5s</span></p>
+						</div>
+					</div>
+
+					<div class="display current" id="ste">
+						<p>OXY2DEV</p>
+
+						<div class="atom">
+							<div class="atom-container">
+								<svg class="background" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0%" y="0%" width="100%" height="100%" viewBox="0 0 100.0 100.0" enable-background="new 0 0 100.0 100.0" xml:space="preserve">
+									<path
+										stroke="var(--fg)"
+										fill-opacity="0.000"
+										stroke-opacity="1.000"
+										fill-rule="nonzero"
+										stroke-width="10.0"
+										stroke-linejoin="miter"
+										stroke-linecap="butt"
+										d="M50.04,20.00A30.00 30.00 -0.00 1 0 50.04,80.00"
+									/>
+
+									<path
+										class="circle-right"
+										stroke="var(--fg)"
+										fill-opacity="0.000"
+										stroke-opacity="1.000"
+										fill-rule="nonzero"
+										stroke-width="10.0"
+										stroke-linejoin="miter"
+										stroke-linecap="butt"
+										d="M50.00,20.00A30.00 30.00 -0.00 1 1 50.00,80.00"
+									/>
+								</svg>
+								<div class="hider"></div>
+
+								<div class="core"></div>
+								<div class="orbit orbit-2">
+									<div class="electron electron-3"></div>
+									<div class="electron electron-4"></div>
+									<div class="electron electron-5"></div>
+									<div class="electron electron-6"></div>
+									<div class="electron electron-7"></div>
+									<div class="electron electron-8"></div>
+								</div>
+
+								<div class="orbit orbit-1">
+									<div class="electron electron-1"></div>
+									<div class="electron electron-2"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+
 				<div class="ui" id="desc"></div>
 				<div class="ui active" id="list">
-					<div class="item">
-						<div>A</div>
-						<div>OXY2DEV</div>
-						<div>Hello world</div>
-					</div>
 					<div class="item">
 						<div>A</div>
 						<div>OXY2DEV</div>

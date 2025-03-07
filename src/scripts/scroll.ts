@@ -70,6 +70,9 @@ gsap.fromTo("#body .about-me .name-right", {
 let interestsTL = gsap.timeline({
 	scrollTrigger: {
 		trigger: "#body .interests",
+		//snap: {
+		//	snapTo: 0.5,
+		//},
 	}
 });
 
@@ -92,11 +95,11 @@ interestsTL.fromTo("#body .interests .script .line", {
 	duration: 0.25
 }, "<");
 
-interestsTL.fromTo("#body .interests .doc .winbar span", {
+interestsTL.fromTo("#body .interests .winbar span", {
 	opacity: 0
 }, {
 	opacity: 1,
 	stagger: 0.05
-})
+});
 
 

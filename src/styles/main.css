@@ -216,21 +216,50 @@ body[data-theme="dark"] {
 			transition-property: color, background-color;
 			transition-duration: var(--tr-dur);
 
-			.doc {
-				hr {
-					border: 1px solid var(--dark-s1);
-				}
+			hr {
+				background-color: var(--dark-s1);
+			}
 
-				.winbar p {
+			.winbar {
+				background-color: var(--dark-bg);
+				border-color: var(--dark-s1);
+
+				p {
 					.root {
 						color: var(--dark-bg);
 						background-color: var(--dark-c5);
 					}
 				}
+			}
+
+			.doc {
+				color: var(--dark-fg);
+				background-color: var(--dark-bg);
+
+				transition-property: color, background-color;
+				transition-duration: var(--tr-dur);
+
+				.mention {
+					filter: contrast(150%);
+					color: var(--dark-c4);
+					background-color: var(--dark-s1);
+				}
+
+				.ref {
+					filter: contrast(150%);
+					color: var(--dark-c5);
+					background-color: var(--dark-s1);
+				}
+
+				code {
+					filter: contrast(150%);
+					color: var(--dark-c5);
+					background-color: var(--dark-s1);
+				}
 
 				.color-0.pad::before {
 					color: transparent;
-					background-color: var(--dark-c2);
+					background-color: var(--dark-s2);
 				}
 
 				.color-1.pad::before {
@@ -325,6 +354,10 @@ body[data-theme="dark"] {
 				}
 
 				.display#mkv {
+					hr {
+						background-color: var(--dark-s1);
+					}
+
 					.raw {
 						h1 {
 							color: var(--dark-c1);
@@ -430,7 +463,7 @@ body[data-theme="dark"] {
 
 						.color-0.pad::before {
 							color: transparent;
-							background-color: var(--dark-c2);
+							background-color: var(--dark-s2);
 						}
 
 						.color-1.pad::before {
@@ -456,6 +489,109 @@ body[data-theme="dark"] {
 						.color-5.pad::before {
 							color: transparent;
 							background-color: var(--dark-c5);
+						}
+					}
+				}
+
+				.display#pat {
+					.cursor {
+						background-color: var(--dark-fg);
+						color: var(--dark-bg);
+					}
+
+					.hover_1, .hover_2 {
+						border-color: var(--dark-s1);
+
+						.color-0::before {
+							color: transparent;
+							background-color: var(--dark-s2);
+						}
+
+						.color-1::before {
+							color: transparent;
+							background-color: var(--dark-c1);
+						}
+
+						.color-2::before {
+							color: transparent;
+							background-color: var(--dark-c2);
+						}
+
+						.color-3::before {
+							color: transparent;
+							background-color: var(--dark-c3);
+						}
+
+						.color-4::before {
+							color: transparent;
+							background-color: var(--dark-c4);
+						}
+
+						.color-5::before {
+							color: transparent;
+							background-color: var(--dark-c5);
+						}
+					}
+				}
+
+				.display#vhs {
+					hr {
+						background-color: var(--dark-s1);
+					}
+				}
+
+				.display#ste {
+					p {
+						background-color: var(--dark-bg);
+						color: var(--dark-fg);
+					}
+
+					.atom {
+						.atom-container {
+							.background {
+								stroke: var(--dark-fg);
+
+								transition-property: stroke;
+								transition-duration: var(--tr-dur);
+							}
+
+							.circle-left, .circle-right {
+								stroke: var(--dark-fg);
+							}
+
+							.circle-right.changed {
+								stroke: var(--dark-c5);
+							}
+
+							.hider {
+								background-color: var(--dark-bg);
+
+								transition-property: background-color;
+								transition-duration: var(--tr-dur);
+							}
+
+							.core {
+								background-image: radial-gradient(at 25% 25%, var(--dark-c5) 0%, transparent 90%);
+
+								transition-property: background-image;
+								transition-duration: var(--tr-dur);
+							}
+
+							.orbit {
+								border-color: var(--dark-s2);
+
+								transition-property: background-image;
+								transition-duration: var(--tr-dur);
+
+								.electron {
+									&::before {
+										background-color: var(--dark-s3);
+
+										transition-property: background-color;
+										transition-duration: var(--tr-dur);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -751,14 +887,20 @@ body[data-theme="light"] {
 			transition-duration: var(--tr-dur);
 
 			.doc {
-				hr {
-					border: 1px solid var(--light-s1);
-				}
+				color: var(--light-fg);
+				background-color: var(--light-bg);
 
-				.winbar p {
-					.root {
-						color: var(--light-bg);
-						background-color: var(--light-c5);
+				transition-property: color, background-color;
+				transition-duration: var(--tr-dur);
+
+				.winbar {
+					border-color: var(--light-s1);
+
+					p {
+						.root {
+							color: var(--light-bg);
+							background-color: var(--light-c5);
+						}
 					}
 				}
 
@@ -1318,7 +1460,7 @@ body {
 		position: relative;
 		display: grid;
 
-		grid-template-rows: auto 1fr;
+		grid-template-rows: 4fr 6fr;
 
 		width: 100dvw;
 		height: 100dvh;
@@ -1329,20 +1471,9 @@ body {
 
 		.doc {
 			position: relative;
+			overflow: scroll;
 
-			&::before {
-				content: "";
-				position: absolute;
-				z-index: 5;
-
-				top: 0;
-				left: 0;
-
-				width: 100%;
-				height: 100%;
-
-				backdrop-filter: brightness(75%);
-			}
+			filter: brightness(75%);
 
 			p {
 				margin: 0 5dvw 0 5dvw;
@@ -1354,6 +1485,10 @@ body {
 
 			.title {
 				color: transparent;
+			}
+
+			.ref, .mention, code {
+				padding: 0 5px;
 			}
 
 			.color-0.pad, .color-1.pad, .color-2.pad, .color-3.pad, .color-4.pad, .color-5.pad {
@@ -1373,21 +1508,26 @@ body {
 
 				opacity: 0.25;
 			}
+		}
 
-			.winbar {
-				position: absolute;
+		.winbar {
+			position: absolute;
 
-				bottom: 0;
-				left: 0;
+			top: calc(40dvh - (0.5rem + 2px));
+			left: 0;
 
-				z-index: 10;
+			width: 100dvw;
 
-				p {
-					margin: 0;
+			z-index: 10;
 
-					.root {
-						padding: 0 1ch;
-					}
+			border-top-width: 1px;
+			border-top-style: solid;
+
+			p {
+				margin: 0;
+
+				.root {
+					padding: 0 1ch;
 				}
 			}
 		}
@@ -1465,7 +1605,7 @@ body {
 		position: relative;
 		display: grid;
 
-		grid-template-rows: 2fr 1fr auto;
+		grid-template-rows: 8fr 2fr auto;
 		grid-row-gap: 5px;
 
 		width: 100dvw;
@@ -1524,8 +1664,28 @@ body {
 			.display#mkv {
 				display: grid;
 
-				grid-template-columns: 1fr 1fr;
-				grid-column-gap: 1ch;
+				grid-template-rows: 1fr 1fr;
+				grid-row-gap: 1ch;
+
+				> * {
+					width: 65ch;
+					overflow: scroll;
+					-webkit-overflow-scrolling: touch;
+
+					justify-self: center;
+				}
+
+				hr {
+					position: absolute;
+
+					top: calc(50% - 0.5px);
+					left: 0;
+
+					width: 100%;
+					height: 1px;
+
+					border: none;
+				}
 
 				.raw, .preview {
 					h1, h2, h3 {
@@ -1651,6 +1811,251 @@ body {
 					}
 				}
 			}
+
+			.display#pat {
+				.hover_1 {
+					position: absolute;
+
+					top: 1.5rem;
+					left: 40ch;
+
+					border-width: 0.75px;
+					border-style: solid;
+					border-radius: 2.5px;
+
+					overflow: hidden;
+				}
+
+				.hover_2 {
+					position: absolute;
+
+					top: 6.75rem;
+					left: 15ch;
+
+					border-width: 0.75px;
+					border-style: solid;
+					border-radius: 2.5px;
+
+					overflow: hidden;
+				}
+
+				.hover_1, .hover_2 {
+					p {
+						--indent: 0;
+
+						padding-left: calc(5px + var(--indent) * 2ch);
+						padding-right: 5px;
+					}
+
+					.color-0, .color-1, .color-2, .color-3, .color-4, .color-5 {
+						position: relative;
+					}
+
+					.color-0::before, .color-1::before, .color-2::before, .color-3::before, .color-4::before, .color-5::before {
+						content: "";
+						position: absolute;
+
+						top: 0;
+						left: 0;
+
+						width: 100%;
+						height: 100%;
+
+						opacity: 0.25;
+					}
+				}
+			}
+
+			.display#vhs {
+				display: grid;
+
+				grid-template-rows: 1fr 1fr;
+				grid-row-gap: 1ch;
+
+				> * {
+					width: 65ch;
+					overflow: scroll;
+					-webkit-overflow-scrolling: touch;
+				}
+
+				hr {
+					position: absolute;
+
+					top: calc(50% - 0.5px);
+					left: 0;
+
+					width: 100%;
+					height: 1px;
+
+					border: none;
+				}
+			}
+
+			.display#ste {
+				justify-content: center;
+				align-content: center;
+				text-align: center;
+
+				p {
+					position: absolute;
+
+					top: 50%;
+					left: calc(50% - 3.5ch);
+
+					z-index: 5;
+
+					width: 7ch;
+					font-size: 3rem;
+					line-height: 1;
+					overflow: hidden;
+
+					transform: translateY(-50%);
+				}
+
+				.atom {
+					---size: 200px;
+
+					position: absolute;
+
+					top: 50%;
+					left: 50%;
+
+					transform: translate(-50%, -50%);
+
+					width: var(---size);
+					height: var(---size);
+
+					.atom-container {
+						position: relative;
+
+						width: 100%;
+						height: 100%;
+
+						justify-content: center;
+						align-content: center;
+
+						--orbit-size: 0.5px;
+						--electron-size: 6px;
+
+						.hider {
+							--w: 10%;
+
+							position: absolute;
+
+							top: 0;
+							left: calc(50% - (var(--w) / 2));
+
+							width: var(--w);
+							height: 100%;
+
+							transform: rotate(45deg);
+						}
+
+						.background {
+							z-index: -1;
+
+							width: 100%;
+							height: 100%;
+
+							transform: rotate(45deg);
+
+							path {
+								transform-origin: center;
+							}
+						}
+
+						.core {
+							position: absolute;
+
+							top: 35%;
+							left: 35%;
+
+							width: 30%;
+							height: 30%;
+
+							border-radius: 50%;
+						}
+
+						.orbit {
+							.electron {
+								position: absolute;
+
+								top: 0;
+								left: 0;
+
+								width: 100%;
+								height: 100%;
+
+								&::before {
+									content: "";
+
+									position: absolute;
+
+									top: calc(-1 * ( var(--electron-size) / 2 ));
+									left: calc(50% - ( var(--electron-size) / 2 ));
+
+									width: var(--electron-size);
+									height: var(--electron-size);
+
+									border-radius: 50%;
+								}
+							}
+						}
+
+						.orbit-1 {
+							position: absolute;
+
+							top: 25%;
+							left: 25%;
+
+							width: 50%;
+							height: 50%;
+
+							border-width: var(--orbit-size);
+							border-style: solid;
+							border-radius: 50%;
+
+							.electron-2 {
+								transform: rotate(180deg);
+							}
+						}
+
+						.orbit-2 {
+							position: absolute;
+
+							top: 15%;
+							left: 15%;
+
+							width: 70%;
+							height: 70%;
+
+							border-width: var(--orbit-size);
+							border-style: solid;
+							border-radius: 50%;
+
+							.electron-4 {
+								transform: rotate(60deg);
+							}
+
+							.electron-5 {
+								transform: rotate(120deg);
+							}
+
+							.electron-6 {
+								transform: rotate(180deg);
+							}
+
+							.electron-7 {
+								transform: rotate(240deg);
+							}
+
+							.electron-8 {
+								transform: rotate(300deg);
+							}
+						}
+					}
+				}
+			}
 		}
 
 		.ui#desc {
@@ -1681,6 +2086,11 @@ body {
 		.projects {
 			.ui#preview {
 				.display#hpv {
+					justify-content: center;
+					grid-template-columns: 65ch 65ch;
+				}
+
+				.display#vhs {
 					justify-content: center;
 					grid-template-columns: 65ch 65ch;
 				}
