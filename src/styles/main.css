@@ -604,9 +604,13 @@ body[data-theme="dark"] {
 					color: var(--dark-c4);
 					background-color: var(--dark-bg);
 				}
+
+				.link {
+					border-color: var(--dark-c4);
+				}
 			}
 
-			.list {
+			.ui#list {
 				.item:hover {
 					background-color: var(--dark-s1);
 				}
@@ -1606,7 +1610,7 @@ body {
 		display: grid;
 
 		grid-template-rows: 8fr 2fr auto;
-		grid-row-gap: 5px;
+		grid-row-gap: 10px;
 
 		width: 100dvw;
 		height: 100dvh;
@@ -2059,21 +2063,43 @@ body {
 		}
 
 		.ui#desc {
+			padding: 5px;
+
 			&::before {
 				content: "[D]escription";
+			}
+
+			.link {
+				position: absolute;
+
+				bottom: 5px;
+				right: 5px;
+
+				padding-bottom: 0.5px;
+
+				border-bottom-width: 0.5px;
+				border-bottom-style: dashed;
+
+				text-decoration: none;
+
+				&:hover {
+					border-bottom-style: solid;
+				}
 			}
 		}
 
 		.ui#list {
+			padding: 5px 0 0 0;
+
 			&::before {
-				content: "[L]ist";
+				content: "[F]eatured projects";
 			}
 
 			.item {
 				display: grid;
 				padding: 0 5px;
 
-				grid-template-columns: auto auto 1fr;
+				grid-template-columns: 2ch 3fr 7fr;
 				grid-column-gap: 1ch;
 			}
 		}

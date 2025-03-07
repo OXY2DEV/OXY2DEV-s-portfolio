@@ -371,7 +371,14 @@ projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom .background
 	ease: "power4.out"
 }, "-=0.25");
 
-projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom ", {
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste p", {
+	width: 0
+}, {
+	width: "7ch",
+	duration: 0.25,
+});
+
+projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom, #body .projects .ui#preview .display#ste p", {
 	opacity: 1,
 }, {
 	opacity: 0,
@@ -379,11 +386,123 @@ projectAtomTL.fromTo("#body .projects .ui#preview .display#ste .atom ", {
 	delay: 2.5
 });
 
-projectAtomTL.fromTo("#body .projects .ui#preview .display#ste p ", {
-	width: 0
-}, {
-	width: "7ch",
-	duration: 0.25,
-}, "-=0.125");
 
+
+let mkvTL = gsap.timeline({
+	paused: true,
+
+	onComplete: () => {
+		document.querySelector("#body .projects .ui#desc .link")?.setAttribute("href", "https://github.com/OXY2DEV/markview.nvim");
+	}
+});
+
+
+mkvTL.fromTo("#body .projects .ui#desc p", {
+	text: ""
+}, {
+	text: "A fancy and hackable Markdown, Typst, LaTeX & YAML previewer for Neovim. Supports a wide variety of syntaxes along with the ability to customize everything."
+});
+
+
+let hpvTL = gsap.timeline({
+	paused: true,
+
+	onComplete: () => {
+		document.querySelector("#body .projects .ui#desc .link")?.setAttribute("href", "https://github.com/OXY2DEV/helpview.nvim");
+	}
+});
+
+hpvTL.fromTo("#body .projects .ui#desc p", {
+	text: ""
+}, {
+	text: "A fancy Vimdoc/Help file previewer for Neovim that is designed to make help files more pleasing to look at."
+});
+
+
+let patTL = gsap.timeline({
+	paused: true,
+
+	onComplete: () => {
+		document.querySelector("#body .projects .ui#desc .link")?.setAttribute("href", "https://github.com/OXY2DEV/patterns.nvim");
+	}
+});
+
+patTL.fromTo("#body .projects .ui#desc p", {
+	text: ""
+}, {
+	text: "Tree-sitter based Lua patterns & Regexp explainer and tester. Shows pattern explanation either through hovering or commands. Also comes with it's own patttern tester to test patterns."
+});
+
+
+let vhsTL = gsap.timeline({
+	paused: true,
+
+	onComplete: () => {
+		document.querySelector("#body .projects .ui#desc .link")?.setAttribute("href", "https://github.com/OXY2DEV/tree-sitter-vhs");
+	}
+});
+
+vhsTL.fromTo("#body .projects .ui#desc p", {
+	text: ""
+}, {
+	text: "A more feature rich version of the VHS parser(created by charmbracelet) made with tree-sitter."
+});
+
+
+let steTL = gsap.timeline({
+	paused: true,
+
+	onComplete: () => {
+		document.querySelector("#body .projects .ui#desc .link")?.setAttribute("href", "https://github.com/OXY2DEV/OXY2DEV-s-portfolio");
+	}
+});
+
+steTL.fromTo("#body .projects .ui#desc p", {
+	text: ""
+}, {
+	text: "A basic website built using Vite made entirely on a phone. The website is inspired by Neovim & Terminals and has a very simple structure."
+});
+
+
+
+
+
+let entries = document.querySelectorAll("#body .projects .ui#list .item");
+const descriptions: { [index: number]: GSAPTimeline | null } = {
+	0: mkvTL,
+	1: hpvTL,
+	2: patTL,
+	3: vhsTL,
+	4: steTL,
+};
+const affects: String[] = [
+	"#body .projects .ui#preview .display#mkv",
+	"#body .projects .ui#preview .display#hpv",
+	"#body .projects .ui#preview .display#pat",
+	"#body .projects .ui#preview .display#vhs",
+	"#body .projects .ui#preview .display#ste",
+];
+
+entries.forEach((entry, index) => {
+	entry.addEventListener("click", () => {
+		gsap.to("#body .projects .ui#preview .display", {
+			autoAlpha: 0
+		});
+		gsap.to(affects[index], { autoAlpha: 1 });
+
+		if (descriptions[index]) {
+			console.log(index)
+			descriptions[index].restart();
+		}
+
+		if (index == 4) {
+			projectAtomTL.restart();
+		} else {
+			projectAtomTL.pause();
+		}
+	});
+});
+
+projectAtomTL.play();
+steTL.play();
 
