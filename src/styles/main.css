@@ -32,7 +32,6 @@
 
 * {
 	transition-property: color, background-color, stroke;
-	transition-duration: 0.5s;
 }
 
 /* Dark mode */
@@ -2340,7 +2339,7 @@ body {
 
 	padding: 0 20dvw;
 
-	z-index: 100;
+	z-index: 80;
 
 	align-content: center;
 	text-align: center;

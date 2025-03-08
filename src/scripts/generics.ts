@@ -14,6 +14,9 @@ export let siteTheme: "dark" | "light" = "dark";
 
 export const HI = 1;
 
+/*
+	* Updates dark mode checkbox
+*/
 function updateCheckbox (check: boolean) {
 	let modeInput: HTMLInputElement | null = document.querySelector("#themer .mode .toggle input");
 
@@ -28,9 +31,11 @@ function updateCheckbox (check: boolean) {
 	*
 	* Sets the site theme(dark/light)
 */
-export function setTheme (theme?: "dark" | "light") {
+export function setTheme (theme: "dark" | "light" | null) {
 	const media = window.matchMedia("(prefers-color-scheme: dark)");
 	let body = document.querySelector("body");
+
+	theme = theme || localStorage.getItem("__OX_theme");
 
 	if (body == null) {
 		return;
@@ -38,16 +43,19 @@ export function setTheme (theme?: "dark" | "light") {
 		siteTheme = theme;
 		body.setAttribute("data-theme", theme);
 
+		localStorage.setItem("__OX_theme", theme);
 		updateCheckbox(theme == "dark");
 	} else if (media.matches) {
 		siteTheme = "dark";
 		body.setAttribute("data-theme", "dark");
 
+		localStorage.setItem("__OX_theme", "dark");
 		updateCheckbox(true);
 	} else {
 		siteTheme = "light";
 		body.setAttribute("data-theme", "light");
 
+		localStorage.setItem("__OX_theme", "light");
 		updateCheckbox(false);
 	}
 
@@ -108,7 +116,7 @@ export function updateScheme () {
 	let schemes: NodeListOf<HTMLDivElement> = document.querySelectorAll("#themer .colorscheme .scheme");
 
 	schemes.forEach(scheme => {
-		let name = scheme.dataset || "";
+		let name: String = scheme.dataset.scheme || "";
 
 		if (name == schemeName) {
 			scheme.classList.add("current");
@@ -235,8 +243,11 @@ const schemeValue: { [name: string]: { [property: string]: string } } = {
 	}
 };
 
-export function setColorscheme (scheme: string | undefined) {
-	scheme = scheme || localStorage.getItem("__colorscheme") || "catppuccin";
+/*
+	* Sets colorscheme.
+*/
+export function setColorscheme (scheme: string | undefined | null) {
+	scheme = scheme || localStorage.getItem("__OX_colorscheme") || "catppuccin";
 
 	if (schemeValue[scheme] == null) {
 		return;
@@ -286,5 +297,7 @@ export function setColorscheme (scheme: string | undefined) {
 			sc.classList.remove("current");
 		}
 	});
+
+	localStorage.setItem("__OX_colorscheme", scheme);
 }
 

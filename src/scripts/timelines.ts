@@ -9,7 +9,8 @@ import TextPlugin from "gsap/TextPlugin";
 import { createElement, IconNode, Activity, Sparkles, ScrollText, Spline, Mouse, Aperture, CircleCheckBig } from "lucide";
 
 gsap.registerPlugin(TextPlugin);
-generics.setTheme();
+generics.setTheme(null);
+generics.setColorscheme(null);
 
 /**
 	*

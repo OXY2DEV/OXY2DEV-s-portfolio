@@ -8,7 +8,6 @@ import eruda from "eruda";
 createIcons({
 	icons: { Mouse, SwatchBook }
 });
-
 eruda.init();
 
 import * as generics from "./generics";
@@ -28,8 +27,6 @@ colorschemes.forEach(schemeElement => {
 		generics.setColorscheme(schemeElement.dataset.scheme);
 	})
 })
-
-generics.setColorscheme();
 
 let themerBtn: HTMLDivElement | null = document.querySelector("#theme-changer");
 let themerVisible = false;
