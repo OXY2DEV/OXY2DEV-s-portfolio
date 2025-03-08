@@ -3,12 +3,12 @@ import "../styles/main.css";
 import gsap from "gsap";
 
 import { createIcons, Mouse, SwatchBook } from "lucide";
-import eruda from "eruda";
+//import eruda from "eruda";
 
 createIcons({
 	icons: { Mouse, SwatchBook }
 });
-eruda.init();
+//eruda.init();
 
 import * as generics from "./generics";
 
