@@ -105,4 +105,17 @@ interestsTL.fromTo("#body .interests .winbar span", {
 	stagger: 0.05
 });
 
+// Theme changer /////////////////////////////////////////////////////
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to("#theme-changer", {
+	opacity: 0,
+	pointerEvents: "none",
+	scrollTrigger: {
+		trigger: document.documentElement,
+		start: "top+=100 top",
+		toggleActions: "play none none reverse"
+	}
+});
 
