@@ -35,15 +35,21 @@ export function setTheme (theme: "dark" | "light" | null) {
 	const media = window.matchMedia("(prefers-color-scheme: dark)");
 	let body = document.querySelector("body");
 
-	theme = theme || localStorage.getItem("__OX_theme");
+	let _theme: "dark" | "light" | null;
+
+	if (theme != null) {
+		_theme = theme;
+	} else {
+		_theme = localStorage.getItem("__OX_theme") as "light" | "dark" | null
+	}
 
 	if (body == null) {
 		return;
-	} else if (theme != null) {
-		siteTheme = theme;
-		body.setAttribute("data-theme", theme);
+	} else if (_theme != null) {
+		siteTheme = _theme;
+		body.setAttribute("data-theme", _theme);
 
-		localStorage.setItem("__OX_theme", theme);
+		localStorage.setItem("__OX_theme", _theme);
 		updateCheckbox(theme == "dark");
 	} else if (media.matches) {
 		siteTheme = "dark";
