@@ -30,28 +30,24 @@
 	--tr-dur: 0.25s;
 }
 
+* {
+	transition-property: color, background-color, stroke;
+	transition-duration: 0.5s;
+}
+
 /* Dark mode */
 body[data-theme="dark"] {
 	background-color: var(--dark-bg);
 	color: var(--dark-fg);
 
-	transition-property: background-color, color;
-	transition-duration: var(--tr-dur);
-
 	#loader {
 		background-color: var(--dark-bg);
 		color: var(--dark-fg);
-
-		transition-property: background-color, color;
-		transition-duration: var(--tr-dur);
 
 		.atom {
 			.atom-container {
 				.background {
 					stroke: var(--dark-fg);
-
-					transition-property: stroke;
-					transition-duration: var(--tr-dur);
 				}
 
 				.circle-left, .circle-right {
@@ -64,30 +60,18 @@ body[data-theme="dark"] {
 
 				.hider {
 					background-color: var(--dark-bg);
-
-					transition-property: background-color;
-					transition-duration: var(--tr-dur);
 				}
 
 				.core {
 					background-image: radial-gradient(at 25% 25%, var(--dark-c5) 0%, transparent 90%);
-
-					transition-property: background-image;
-					transition-duration: var(--tr-dur);
 				}
 
 				.orbit {
 					border-color: var(--dark-s2);
 
-					transition-property: background-image;
-					transition-duration: var(--tr-dur);
-
 					.electron {
 						&::before {
 							background-color: var(--dark-s3);
-
-							transition-property: background-color;
-							transition-duration: var(--tr-dur);
 						}
 					}
 				}
@@ -96,16 +80,10 @@ body[data-theme="dark"] {
 
 		.loader-text {
 			color: var(--dark-fg);
-
-			transition-property: color;
-			transition-duration: var(--tr-dur);
 		}
 
 		.loader-text-overlay {
 			background-image: linear-gradient(to bottom, transparent 50%, var(--dark-bg) 80%);
-
-			transition-property: background-image;
-			transition-duration: var(--tr-dur);
 		}
 	}
 
@@ -113,33 +91,18 @@ body[data-theme="dark"] {
 		background-color: var(--dark-bg);
 		color: var(--dark-fg);
 
-		transition-property: background-color, color;
-		transition-duration: var(--tr-dur);
-
 		.intro {
 			background-image: conic-gradient(from 270deg, var(--dark-s1), var(--dark-bg) 50%);
 
-			transition-property: background-image;
-			transition-duration: var(--tr-dur);
-
 			.name {
 				color: var(--dark-fg);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
 			}
 
 			.desc {
 				color: var(--dark-fg);
 
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-
 				.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
 					background-color: var(--dark-s1);
-
-					transition-property: background-color, color;
-					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -149,24 +112,15 @@ body[data-theme="dark"] {
 
 				&::before {
 					color: var(--dark-c2);
-
-					transition-property: color;
-					transition-duration: var(--tr-dur);
 				}
 			}
 
 			.lower {
-				transition-property: color, background-color, border-color;
-				transition-duration: var(--tr-dur);
-
 				&::before {
 					color: var(--dark-c5);
 					background-color: var(--dark-bg);
 
 					filter: contrast(125%);
-
-					transition-property: color;
-					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -180,14 +134,6 @@ body[data-theme="dark"] {
 
 		.about-me {
 			color: var(--dark-fg);
-
-			transition-property: color, background-color;
-			transition-duration: var(--tr-dur);
-
-			.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
-				transition-property: background-color, color;
-				transition-duration: var(--tr-dur);
-			}
 
 			.overlay {
 				background-image: linear-gradient(var(--dark-bg), transparent, var(--dark-bg));
@@ -213,9 +159,6 @@ body[data-theme="dark"] {
 			color: var(--dark-fg);
 			background-color: var(--dark-bg);
 
-			transition-property: color, background-color;
-			transition-duration: var(--tr-dur);
-
 			hr {
 				background-color: var(--dark-s1);
 			}
@@ -235,9 +178,6 @@ body[data-theme="dark"] {
 			.doc {
 				color: var(--dark-fg);
 				background-color: var(--dark-bg);
-
-				transition-property: color, background-color;
-				transition-duration: var(--tr-dur);
 
 				.mention {
 					filter: contrast(150%);
@@ -552,9 +492,6 @@ body[data-theme="dark"] {
 						.atom-container {
 							.background {
 								stroke: var(--dark-fg);
-
-								transition-property: stroke;
-								transition-duration: var(--tr-dur);
 							}
 
 							.circle-left, .circle-right {
@@ -567,30 +504,18 @@ body[data-theme="dark"] {
 
 							.hider {
 								background-color: var(--dark-bg);
-
-								transition-property: background-color;
-								transition-duration: var(--tr-dur);
 							}
 
 							.core {
 								background-image: radial-gradient(at 25% 25%, var(--dark-c5) 0%, transparent 90%);
-
-								transition-property: background-image;
-								transition-duration: var(--tr-dur);
 							}
 
 							.orbit {
 								border-color: var(--dark-s2);
 
-								transition-property: background-image;
-								transition-duration: var(--tr-dur);
-
 								.electron {
 									&::before {
 										background-color: var(--dark-s3);
-
-										transition-property: background-color;
-										transition-duration: var(--tr-dur);
 									}
 								}
 							}
@@ -624,44 +549,72 @@ body[data-theme="dark"] {
 
 	.color-0 {
 		color: var(--dark-s2);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-1 {
 		color: var(--dark-c1);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-2 {
 		color: var(--dark-c2);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-3 {
 		color: var(--dark-c3);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-4 {
 		color: var(--dark-c4);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-5 {
 		color: var(--dark-c5);
+	}
 
-		transition-property: color;
-		transition-duration: var(--tr-dur);
+	#themer {
+		background-color: var(--dark-bg);
+
+		.toggle {
+			.slider {
+				background-color: var(--dark-s1);
+			}
+
+			.slider::before {
+				background-color: var(--dark-fg);
+			}
+
+			input:checked + .slider {
+				background-color: var(--dark-c5);
+			}
+
+			input:checked + .slider::before {
+				background-color: var(--dark-bg);
+			}
+		}
+
+		.colorscheme {
+			.scheme {
+				color: var(--dark-fg);
+				background-color: var(--dark-s1);
+			}
+
+			.scheme.current {
+				color: var(--dark-bg);
+				background-color: var(--dark-fg);
+			}
+		}
+	}
+
+	#theme-changer {
+		path {
+			stroke: var(--dark-c5);
+		}
+	}
+
+	#theme-changer.active {
+		path {
+			stroke: var(--dark-s1);
+		}
 	}
 }
 
@@ -670,23 +623,14 @@ body[data-theme="light"] {
 	background-color: var(--light-bg);
 	color: var(--light-fg);
 
-	transition-property: background-color, color;
-	transition-duration: var(--tr-dur);
-
 	#loader {
 		background-color: var(--light-bg);
 		color: var(--light-fg);
-
-		transition-property: background-color, color;
-		transition-duration: var(--tr-dur);
 
 		.atom {
 			.atom-container {
 				.background {
 					stroke: var(--light-fg);
-
-					transition-property: stroke;
-					transition-duration: var(--tr-dur);
 				}
 
 				.circle-left, .circle-right {
@@ -699,30 +643,18 @@ body[data-theme="light"] {
 
 				.hider {
 					background-color: var(--light-bg);
-
-					transition-property: background-color;
-					transition-duration: var(--tr-dur);
 				}
 
 				.core {
 					background-image: radial-gradient(at 25% 25%, var(--light-c5) 0%, transparent 90%);
-
-					transition-property: background-image;
-					transition-duration: var(--tr-dur);
 				}
 
 				.orbit {
 					border-color: var(--light-s2);
 
-					transition-property: background-image;
-					transition-duration: var(--tr-dur);
-
 					.electron {
 						&::before {
 							background-color: var(--light-s3);
-
-							transition-property: background-color;
-							transition-duration: var(--tr-dur);
 						}
 					}
 				}
@@ -731,16 +663,10 @@ body[data-theme="light"] {
 
 		.loader-text {
 			color: var(--light-fg);
-
-			transition-property: color;
-			transition-duration: var(--tr-dur);
 		}
 
 		.loader-text-overlay {
 			background-image: linear-gradient(to bottom, transparent 50%, var(--light-bg) 80%);
-
-			transition-property: background-image;
-			transition-duration: var(--tr-dur);
 		}
 	}
 
@@ -748,33 +674,18 @@ body[data-theme="light"] {
 		background-color: var(--light-bg);
 		color: var(--light-fg);
 
-		transition-property: background-color, color;
-		transition-duration: var(--tr-dur);
-
 		.intro {
 			background-image: conic-gradient(from 270deg, var(--light-s1), var(--light-bg) 50%);
 
-			transition-property: background-image;
-			transition-duration: var(--tr-dur);
-
 			.name {
 				color: var(--light-fg);
-
-				transition-property: color;
-				transition-duration: var(--tr-dur);
 			}
 
 			.desc {
 				color: var(--light-fg);
 
-				transition-property: color;
-				transition-duration: var(--tr-dur);
-
 				.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
 					background-color: var(--light-s1);
-
-					transition-property: background-color, color;
-					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -784,24 +695,15 @@ body[data-theme="light"] {
 
 				&::before {
 					color: var(--light-c2);
-
-					transition-property: color;
-					transition-duration: var(--tr-dur);
 				}
 			}
 
 			.lower {
-				transition-property: color, background-color, border-color;
-				transition-duration: var(--tr-dur);
-
 				&::before {
 					color: var(--light-c5);
 					background-color: var(--light-bg);
 
 					filter: contrast(125%);
-
-					transition-property: color;
-					transition-duration: var(--tr-dur);
 				}
 			}
 
@@ -815,14 +717,6 @@ body[data-theme="light"] {
 
 		.about-me {
 			color: var(--light-fg);
-
-			transition-property: color, background-color;
-			transition-duration: var(--tr-dur);
-
-			.color-0, .color-1 , .color-2, .color-3, .color-4, .color-5 {
-				transition-property: background-color, color;
-				transition-duration: var(--tr-dur);
-			}
 
 			.overlay {
 				background-image: linear-gradient(var(--light-bg), transparent, var(--light-bg));
@@ -848,9 +742,6 @@ body[data-theme="light"] {
 			color: var(--light-fg);
 			background-color: var(--light-bg);
 
-			transition-property: color, background-color;
-			transition-duration: var(--tr-dur);
-
 			hr {
 				background-color: var(--light-s1);
 			}
@@ -870,9 +761,6 @@ body[data-theme="light"] {
 			.doc {
 				color: var(--light-fg);
 				background-color: var(--light-bg);
-
-				transition-property: color, background-color;
-				transition-duration: var(--tr-dur);
 
 				.mention {
 					filter: contrast(150%);
@@ -1187,9 +1075,6 @@ body[data-theme="light"] {
 						.atom-container {
 							.background {
 								stroke: var(--light-fg);
-
-								transition-property: stroke;
-								transition-duration: var(--tr-dur);
 							}
 
 							.circle-left, .circle-right {
@@ -1202,30 +1087,18 @@ body[data-theme="light"] {
 
 							.hider {
 								background-color: var(--light-bg);
-
-								transition-property: background-color;
-								transition-duration: var(--tr-dur);
 							}
 
 							.core {
 								background-image: radial-gradient(at 25% 25%, var(--light-c5) 0%, transparent 90%);
-
-								transition-property: background-image;
-								transition-duration: var(--tr-dur);
 							}
 
 							.orbit {
 								border-color: var(--light-s2);
 
-								transition-property: background-image;
-								transition-duration: var(--tr-dur);
-
 								.electron {
 									&::before {
 										background-color: var(--light-s3);
-
-										transition-property: background-color;
-										transition-duration: var(--tr-dur);
 									}
 								}
 							}
@@ -1259,44 +1132,68 @@ body[data-theme="light"] {
 
 	.color-0 {
 		color: var(--light-s2);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-1 {
 		color: var(--light-c1);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-2 {
 		color: var(--light-c2);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-3 {
 		color: var(--light-c3);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-4 {
 		color: var(--light-c4);
-
-		transition-property: color;
-		transition-duration: var(--tr-dur);
 	}
 
 	.color-5 {
 		color: var(--light-c5);
+	}
 
-		transition-property: color;
-		transition-duration: var(--tr-dur);
+	#themer {
+		background-color: var(--light-bg);
+
+		.toggle {
+			.slider {
+				background-color: var(--light-s1);
+			}
+
+			.slider::before {
+				background-color: var(--light-fg);
+			}
+
+			input:checked + .slider {
+				background-color: var(--light-c5);
+			}
+
+			input:checked + .slider::before {
+				background-color: var(--light-bg);
+			}
+		}
+
+		.colorscheme {
+			.scheme {
+				color: var(--light-fg);
+				background-color: var(--light-s1);
+			}
+
+			.scheme.current {
+				color: var(--light-bg);
+				background-color: var(--light-fg);
+			}
+		}
+	}
+
+	#theme-changer {
+		stroke: var(--light-c5);
+	}
+
+	#theme-changer.active {
+		stroke: var(--light-s1);
 	}
 }
 
@@ -1316,7 +1213,7 @@ body[data-theme="light"] {
 }
 
 body {
-	width: 100vw;
+	width: 100dvw;
 	height: auto;
 
 	overflow: hidden scroll;
@@ -1533,7 +1430,7 @@ body {
 
 #body {
 	.intro {
-		width: 100vw;
+		width: 100dvw;
 		height: 100vh;
 
 		overflow: hidden;
@@ -1658,7 +1555,7 @@ body {
 		position: relative;
 		display: block;
 
-		width: 100vw;
+		width: 100dvw;
 		height: 100vh;
 
 		overflow: hidden;
@@ -1742,7 +1639,7 @@ body {
 
 		grid-template-rows: 4fr 6fr;
 
-		width: 100vw;
+		width: 100dvw;
 		height: 100vh;
 
 		overflow: hidden;
@@ -1796,7 +1693,7 @@ body {
 			top: calc(40vh - (0.5rem + 2px));
 			left: 0;
 
-			width: 100vw;
+			width: 100dvw;
 
 			z-index: 10;
 
@@ -1819,7 +1716,7 @@ body {
 				position: relative;
 				display: grid;
 
-				width: 100vw;
+				width: 100dvw;
 				min-height: 0.5rem;
 
 				overflow: hidden;
@@ -1855,7 +1752,7 @@ body {
 
 					z-index: 1;
 
-					width: 100vw;
+					width: 100dvw;
 					height: 100%;
 
 					opacity: 0.25;
@@ -1868,7 +1765,7 @@ body {
 				bottom: 0;
 				left: 0;
 
-				width: 100vw;
+				width: 100dvw;
 
 				z-index: 9;
 
@@ -1884,7 +1781,7 @@ body {
 				bottom: 0;
 				left: 0;
 
-				width: 100vw;
+				width: 100dvw;
 
 				z-index: 10;
 
@@ -1902,9 +1799,9 @@ body {
 		display: grid;
 
 		grid-template-rows: 8fr 2fr auto;
-		grid-row-gap: 10px;
+		grid-gap: 10px;
 
-		width: 100vw;
+		width: 100dvw;
 		height: 100vh;
 
 		padding: 10px;
@@ -1964,7 +1861,6 @@ body {
 				grid-row-gap: 1ch;
 
 				> * {
-					width: 65ch;
 					overflow: scroll;
 					-webkit-overflow-scrolling: touch;
 
@@ -1984,6 +1880,9 @@ body {
 				}
 
 				.raw, .preview {
+					width: 100%;
+					padding: 5px;
+
 					h1, h2, h3 {
 						font-size: .5rem;
 					}
@@ -2024,10 +1923,9 @@ body {
 				display: grid;
 
 				grid-template-rows: 1fr 1fr;
-				grid-row-gap: 1ch;
+				grid-gap: 10px;
 
 				> * {
-					width: 65ch;
 					overflow: scroll;
 					-webkit-overflow-scrolling: touch;
 
@@ -2053,6 +1951,9 @@ body {
 				}
 
 				.raw, .preview {
+					width: 100%;
+					padding: 5px;
+
 					h1, h2, h3 {
 						font-size: .5rem;
 						border-width: 0 0 2px 0;
@@ -2166,12 +2067,16 @@ body {
 				display: grid;
 
 				grid-template-rows: 1fr 1fr;
-				grid-row-gap: 1ch;
+				grid-gap: 1ch;
 
 				> * {
-					width: 65ch;
 					overflow: scroll;
 					-webkit-overflow-scrolling: touch;
+				}
+
+				.raw, .preview {
+					width: 100%;
+					padding: 5px;
 				}
 
 				hr {
@@ -2423,6 +2328,121 @@ body {
 }
 
 
+#themer {
+	position: fixed;
+	display: grid;
+
+	top: 0;
+	left: 100dvw;
+
+	width: 100dvw;
+	height: 100dvh;
+
+	padding: 0 20dvw;
+
+	z-index: 100;
+
+	align-content: center;
+	text-align: center;
+
+	font-size: 0.5rem;
+
+	background-color: var(--dark-bg);
+
+	.mode {
+		display: grid;
+
+		align-content: center;
+		grid-template-columns: 7fr 3fr;
+
+		p {
+			align-self: center;
+		}
+	}
+
+	.colorscheme {
+		display: grid;
+
+		grid-template-columns: repeat(3, auto);
+		grid-gap: 10px;
+
+		.scheme {
+			padding: 10px;
+
+			border-radius: 25px;
+		}
+	}
+
+	.toggle {
+		position: relative;
+		display: inline-block;
+
+		width: 30px;
+		height: 17px;
+
+		align-self: center;
+
+		input {
+			width: 0;
+			height: 0;
+
+			opacity: 0;
+		}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+
+			top: 0;
+			left: 0;
+
+			right: 0;
+			bottom: 0;
+
+			border-radius: 7.5px;
+
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+
+			height: 13px;
+			width: 13px;
+
+			left: 2px;
+			bottom: 2px;
+
+			border-radius: 7.5px;
+
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		input:checked + .slider:before {
+			-webkit-transform: translateX(13px);
+			-ms-transform: translateX(13px);
+			transform: translateX(13px);
+		}
+	}
+}
+
+
+#theme-changer {
+	position: fixed;
+
+	bottom: 10px;
+	left: 10px;
+
+	z-index: 100;
+
+	width: 25px;
+	height: 25px;
+}
+
+
 /* For desktop */
 @media (min-width: 100ch) {
 	#body {
@@ -2448,21 +2468,28 @@ body {
 		}
 
 		.projects {
+			grid-template-columns: 6fr 4fr;
+			grid-template-rows: 1fr 1fr;
+
 			.ui#preview {
+				grid-row: span 2;
+
 				.display#mkv {
 					grid-template-rows: 1fr;
 					grid-template-columns: 1fr 1fr;
 
-					grid-column-gap: 10px;
-
 					.raw, .preview {
 						justify-content: center;
 						height: auto;
+
+						overflow: hidden;
+
+						width: auto;
 					}
 
 					hr {
 						top: 0;
-						left: calc(50vw - 10.5px);
+						left: calc(50% - 0.5px);
 
 						width: 1px;
 						height: 100%
@@ -2473,8 +2500,6 @@ body {
 					grid-template-rows: 1fr;
 					grid-template-columns: 1fr 1fr;
 
-					grid-column-gap: 10px;
-
 					.raw, .preview {
 						justify-content: center;
 						height: auto;
@@ -2482,7 +2507,7 @@ body {
 
 					hr {
 						top: 0;
-						left: calc(50vw - 10.5px);
+						left: calc(50% - 0.5px);
 
 						width: 1px;
 						height: 100%
@@ -2502,7 +2527,7 @@ body {
 
 					hr {
 						top: 0;
-						left: calc(50vw - 10.5px);
+						left: calc(50% - 0.5px);
 
 						width: 1px;
 						height: 100%

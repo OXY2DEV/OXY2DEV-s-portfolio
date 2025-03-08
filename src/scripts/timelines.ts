@@ -300,14 +300,27 @@ reveal.fromTo("#body .intro .upper, #body .intro .lower", {
 
 
 gsap.fromTo("#page .intro .arrow", {
-	backgroundImage: "-webkit-linear-gradient(var(--dark-bg) 0%, var(--dark-c5) 100%)",
+	backgroundImage: () => {
+		if (generics.siteTheme == "dark") {
+			return "-webkit-linear-gradient(var(--dark-bg) 0%, var(--dark-c5) 100%)"
+		} else {
+			return "-webkit-linear-gradient(var(--light-bg) 0%, var(--light-c5) 100%)"
+		}
+	},
 }, {
-	backgroundImage: "-webkit-linear-gradient(var(--dark-bg) 25%, var(--dark-c5) 100%)",
+	backgroundImage: () => {
+		if (generics.siteTheme == "dark") {
+			return "-webkit-linear-gradient(var(--dark-bg) 25%, var(--dark-c5) 100%)"
+		} else {
+			return "-webkit-linear-gradient(var(--light-bg) 25%, var(--light-c5) 100%)"
+		}
+	},
 	duration: 0.5,
 	repeatDelay: 0.25,
 
 	repeat: -1,
-	yoyo: true
+	yoyo: true,
+	repeatRefresh: true
 });
 
 // Project animations ////////////////////////////////////////////////
@@ -316,6 +329,7 @@ let projectAtomTL = gsap.timeline({
 	paused: true,
 
 	repeat: -1,
+	repeatRefresh: true,
 	repeatDelay: 1
 });
 
